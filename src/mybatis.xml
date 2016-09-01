@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+  <mappers>
+    <mapper resource="com/kootour/mapper/sql/Course-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/CourseComment-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/CoursePicture-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/CourseSchedule-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Localhost-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/LocationMst-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Picture-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/PictureComment-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Tourist-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/UserOrder-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Sequence-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/LanguageMst-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/LanguageMatrix-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Favorite-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/CourseInExclusion-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/ScheduleOption-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/Message-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/CourseDiscount-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/KootourMst-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/KootourPromo-mapper.xml"/>
+    <mapper resource="com/kootour/mapper/sql/ExtraOption-mapper.xml"/>
+  </mappers>
+</configuration>
+

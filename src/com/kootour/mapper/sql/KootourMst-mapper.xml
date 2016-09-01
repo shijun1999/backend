@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.KootourMstMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.KootourMstEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_IDENTI_NO as kootourIdentiNo,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		LOGIN_TYPE as loginType,
+		DATE_FORMAT(LOGIN_TIME,'%Y%m%d%H%i%S') as loginTime,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_MST
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.KootourMstEntity"
+		resultType="com.kootour.mapper.entity.KootourMstEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_IDENTI_NO as kootourIdentiNo,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		LOGIN_TYPE as loginType,
+		DATE_FORMAT(LOGIN_TIME,'%Y%m%d%H%i%S') as loginTime,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_MST
+		where
+		LANG_ID =#{langId}
+		and KOOTOUR_IDENTI_NO =#{kootourIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.KootourMstEntity"
+		resultType="com.kootour.mapper.entity.KootourMstEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_IDENTI_NO as kootourIdentiNo,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		LOGIN_TYPE as loginType,
+		DATE_FORMAT(LOGIN_TIME,'%Y%m%d%H%i%S') as loginTime,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_MST
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="kootourIdentiNo != null and kootourIdentiNo != '' ">
+			and KOOTOUR_IDENTI_NO =#{kootourIdentiNo}
+		</if>
+		<if test="loginId != null and loginId != '' ">
+			and LOGIN_ID =#{loginId}
+		</if>
+		<if test="password != null and password != '' ">
+			and PASSWORD =#{password}
+		</if>
+		<if test="loginType != null and loginType != '' ">
+			and LOGIN_TYPE =#{loginType}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.KootourMstEntity">
+		update KOOTOUR_MST set
+		LANG_ID= #{langId},
+		KOOTOUR_IDENTI_NO= #{kootourIdentiNo},
+		LOGIN_ID= #{loginId},
+		PASSWORD= #{password},
+		LOGIN_TYPE= #{loginType},
+		LOGIN_TIME= #{loginTime},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and KOOTOUR_IDENTI_NO =#{kootourIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.KootourMstEntity">
+		insert into KOOTOUR_MST(
+		LANG_ID,
+		KOOTOUR_IDENTI_NO,
+		LOGIN_ID,
+		PASSWORD,
+		LOGIN_TYPE,
+		LOGIN_TIME,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{kootourIdentiNo},
+		#{loginId},
+		#{password},
+		#{loginType},
+		#{loginTime},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

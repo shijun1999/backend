@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.LocalhostMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.LocalhostEntity">
+		select
+		LANG_ID as langId,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		VENDOR_IDENTI_NO as vendorIdentiNo,
+		FULL_NAME as fullName,
+		SHORT_NAME as shortName,
+		LAST_NAME as lastName,
+		FIRST_NAME as firstName,
+		LOGIN_TYPE as loginType,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		POST_CODE as postCode,
+		STATE as state,
+		ADDR1 as addr1,
+		ADDR2 as addr2,
+		ADDR3 as addr3,
+		TEL_CODE as telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PHOTO as photo,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		MEMO as memo,
+		BANK_NAME as  bankName,
+		BANK_BRANCH as  bankBranch,
+		BANK_ACCOUNT_NO as  bankAccountNo,
+		BANK_ACCOUNT_TYPE as  bankAccountType,
+		BANK_ACCOUNT_OWNER as  bankAccountOwner,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCALHOST
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.LocalhostEntity"
+		resultType="com.kootour.mapper.entity.LocalhostEntity">
+		select
+		LANG_ID as langId,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		VENDOR_IDENTI_NO as vendorIdentiNo,
+		FULL_NAME as fullName,
+		SHORT_NAME as shortName,
+		LAST_NAME as lastName,
+		FIRST_NAME as firstName,
+		LOGIN_TYPE as loginType,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		POST_CODE as postCode,
+		STATE as state,
+		ADDR1 as addr1,
+		ADDR2 as addr2,
+		ADDR3 as addr3,
+		TEL_CODE as telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PHOTO as photo,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		MEMO as memo,
+		BANK_NAME as  bankName,
+		BANK_BRANCH as  bankBranch,
+		BANK_ACCOUNT_NO as  bankAccountNo,
+		BANK_ACCOUNT_TYPE as  bankAccountType,
+		BANK_ACCOUNT_OWNER as  bankAccountOwner,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCALHOST
+		where
+		LANG_ID =#{langId}
+		and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.LocalhostEntity"
+		resultType="com.kootour.mapper.entity.LocalhostEntity">
+		select
+		LANG_ID as langId,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		VENDOR_IDENTI_NO as vendorIdentiNo,
+		FULL_NAME as fullName,
+		SHORT_NAME as shortName,
+		LAST_NAME as lastName,
+		FIRST_NAME as firstName,
+		LOGIN_TYPE as loginType,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		POST_CODE as postCode,
+		STATE as state,
+		ADDR1 as addr1,
+		ADDR2 as addr2,
+		ADDR3 as addr3,
+		TEL_CODE as telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PHOTO as photo,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		MEMO as memo,
+		BANK_NAME as  bankName,
+		BANK_BRANCH as  bankBranch,
+		BANK_ACCOUNT_NO as  bankAccountNo,
+		BANK_ACCOUNT_TYPE as  bankAccountType,
+		BANK_ACCOUNT_OWNER as  bankAccountOwner,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCALHOST
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="vendorIdentiNo != null and vendorIdentiNo != '' ">
+			and VENDOR_IDENTI_NO =#{vendorIdentiNo}
+		</if>
+		<if test="fullName != null and fullName != '' ">
+			and FULL_NAME LIKE#{fullName}
+		</if>
+		<if test="lastName != null and lastName != '' ">
+			and LAST_NAME =#{lastName}
+		</if>
+		<if test="firstName != null and firstName != '' ">
+			and FIRST_NAME =#{firstName}
+		</if>
+		<if test="loginType != null and loginType != '' ">
+			and LOGIN_TYPE =#{loginType}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		<if test="loginId != null and loginId != '' ">
+			and LOGIN_ID =#{loginId}
+		</if>
+		<if test="password != null and password != '' ">
+			and PASSWORD =#{password}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.LocalhostEntity">
+		update LOCALHOST set
+		LANG_ID= #{langId},
+		LOCALHOST_IDENTI_NO= #{localhostIdentiNo},
+		VENDOR_IDENTI_NO= #{vendorIdentiNo},
+		FULL_NAME= #{fullName},
+		SHORT_NAME= #{shortName},
+		LAST_NAME= #{lastName},
+		FIRST_NAME= #{firstName},
+		LOGIN_TYPE= #{loginType},
+		LOGIN_ID= #{loginId},
+		PASSWORD= #{password},
+		POST_CODE= #{postCode},
+		STATE= #{state},
+		ADDR1= #{addr1},
+		ADDR2= #{addr2},
+		ADDR3= #{addr3},
+		TEL_CODE= #{telCode},
+		TEL_NO= #{telNo},
+		EMAIL= #{email},
+		PHOTO= #{photo},
+		OK_FLG= #{okFlg},
+		USE_LANG_ID= #{useLangId},
+		MEMO= #{memo},
+		BANK_NAME= #{bankName},
+		BANK_BRANCH= #{bankBranch},
+		BANK_ACCOUNT_NO= #{bankAccountNo},
+		BANK_ACCOUNT_TYPE= #{bankAccountType},
+		BANK_ACCOUNT_OWNER= #{bankAccountOwner},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.LocalhostEntity">
+		insert into LOCALHOST(
+		LANG_ID,
+		LOCALHOST_IDENTI_NO,
+		VENDOR_IDENTI_NO,
+		FULL_NAME,
+		SHORT_NAME,
+		LAST_NAME,
+		FIRST_NAME,
+		LOGIN_TYPE,
+		LOGIN_ID,
+		PASSWORD,
+		POST_CODE,
+		STATE,
+		ADDR1,
+		ADDR2,
+		ADDR3,
+		TEL_CODE,
+		TEL_NO,
+		EMAIL,
+		PHOTO,
+		OK_FLG,
+		USE_LANG_ID,
+		MEMO,
+		BANK_NAME,
+		BANK_BRANCH,
+		BANK_ACCOUNT_NO,
+		BANK_ACCOUNT_TYPE,
+		BANK_ACCOUNT_OWNER,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{localhostIdentiNo},
+		#{vendorIdentiNo},
+		#{fullName},
+		#{shortName},
+		#{lastName},
+		#{firstName},
+		#{loginType},
+		#{loginId},
+		#{password},
+		#{postCode},
+		#{state},
+		#{addr1},
+		#{addr2},
+		#{addr3},
+		#{telCode},
+		#{telNo},
+		#{email},
+		#{photo},
+		#{okFlg},
+		#{useLangId},
+		#{memo},
+		#{bankName},
+		#{bankBranch},
+		#{bankAccountNo},
+		#{bankAccountType},
+		#{bankAccountOwner},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

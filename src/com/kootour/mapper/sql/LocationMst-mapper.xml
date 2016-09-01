@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.LocationMstMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.LocationMstEntity">
+		select
+		LANG_ID as langId,
+		IDENTI_NO as identiNo,
+		STATE_NAME as stateName,
+		PROVINCE_NAME as provinceName,
+		CITY_NAME as cityName,
+		TYPE as type,
+		SHORT_NAME as shortName,
+		USE_NAME as useName,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		LONGITUDE_LEFT as longitudeLeft,
+		LATITUDE_TOP as latitudeTop,
+		LONGITUDE_RIGHT as longitudeRight,
+		LATITUDE_BOTTOM as latitudeBottom,
+		POLI_ARRAY as poliArray,
+		SCORE as score,
+		RANK as rank,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCATION_MST
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.LocationMstEntity"
+		resultType="com.kootour.mapper.entity.LocationMstEntity">
+		select
+		LANG_ID as langId,
+		IDENTI_NO as identiNo,
+		STATE_NAME as stateName,
+		PROVINCE_NAME as provinceName,
+		CITY_NAME as cityName,
+		TYPE as type,
+		SHORT_NAME as shortName,
+		USE_NAME as useName,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		LONGITUDE_LEFT as longitudeLeft,
+		LATITUDE_TOP as latitudeTop,
+		LONGITUDE_RIGHT as longitudeRight,
+		LATITUDE_BOTTOM as latitudeBottom,
+		POLI_ARRAY as poliArray,
+		SCORE as score,
+		RANK as rank,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCATION_MST
+		where
+		LANG_ID =#{langId}
+		and IDENTI_NO =#{identiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.LocationMstEntity"
+		resultType="com.kootour.mapper.entity.LocationMstEntity">
+		select
+		LANG_ID as langId,
+		IDENTI_NO as identiNo,
+		STATE_NAME as stateName,
+		PROVINCE_NAME as provinceName,
+		CITY_NAME as cityName,
+		TYPE as type,
+		SHORT_NAME as shortName,
+		USE_NAME as useName,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		LONGITUDE_LEFT as longitudeLeft,
+		LATITUDE_TOP as latitudeTop,
+		LONGITUDE_RIGHT as longitudeRight,
+		LATITUDE_BOTTOM as latitudeBottom,
+		POLI_ARRAY as poliArray,
+		SCORE as score,
+		RANK as rank,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from LOCATION_MST
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="identiNo != null and identiNo != '' ">
+			and IDENTI_NO =#{identiNo}
+		</if>
+		<if test="stateName != null and stateName != '' ">
+			and STATE_NAME LIKE#{stateName}
+		</if>
+		<if test="provinceName != null and provinceName != '' ">
+			and PROVINCE_NAME LIKE#{provinceName}
+		</if>
+		<if test="cityName != null and cityName != '' ">
+			and CITY_NAME LIKE#{cityName}
+		</if>
+		<if test="type != null and type != '' ">
+			and TYPE =#{type}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.LocationMstEntity">
+		update LOCATION_MST set
+		LANG_ID= #{langId},
+		IDENTI_NO= #{identiNo},
+		STATE_NAME= #{stateName},
+		PROVINCE_NAME= #{provinceName},
+		CITY_NAME= #{cityName},
+		TYPE= #{type},
+		SHORT_NAME= #{shortName},
+		USE_NAME= #{useName},
+		ADVENTURE= #{adventure},
+		CULTURE_ARTS= #{cultureArts},
+		FESTIVAL_EVENTS= #{festivalEvents},
+		FOOD_DRINK= #{foodDrink},
+		HISTORICAL= #{historical},
+		LEISURE_SPORTS= #{leisureSports},
+		NATURE_RURAL= #{natureRural},
+		NIGHTLIFE_PARTY= #{nightlifeParty},
+		SHOPPING_MARKET= #{shoppingMarket},
+		OTHER_TYPE1= #{otherType1},
+		OTHER_TYPE2= #{otherType2},
+		OTHER_TYPE3= #{otherType3},
+		LONGITUDE_LEFT= #{longitudeLeft},
+		LATITUDE_TOP= #{latitudeTop},
+		LONGITUDE_RIGHT= #{longitudeRight},
+		LATITUDE_BOTTOM= #{latitudeBottom},
+		POLI_ARRAY= #{poliArray},
+		SCORE= #{score},
+		RANK= #{rank},
+		MEMO= #{memo},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and IDENTI_NO =#{identiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.LocationMstEntity">
+		insert into LOCATION_MST(
+		LANG_ID,
+		IDENTI_NO,
+		STATE_NAME,
+		PROVINCE_NAME,
+		CITY_NAME,
+		TYPE,
+		SHORT_NAME,
+		USE_NAME,
+		ADVENTURE,
+		CULTURE_ARTS,
+		FESTIVAL_EVENTS,
+		FOOD_DRINK,
+		HISTORICAL,
+		LEISURE_SPORTS,
+		NATURE_RURAL,
+		NIGHTLIFE_PARTY,
+		SHOPPING_MARKET,
+		OTHER_TYPE1,
+		OTHER_TYPE2,
+		OTHER_TYPE3,
+		LONGITUDE_LEFT,
+		LATITUDE_TOP,
+		LONGITUDE_RIGHT,
+		LATITUDE_BOTTOM,
+		POLI_ARRAY,
+		SCORE,
+		RANK,
+		MEMO,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{identiNo},
+		#{stateName},
+		#{provinceName},
+		#{cityName},
+		#{type},
+		#{shortName},
+		#{useName},
+		#{adventure},
+		#{cultureArts},
+		#{festivalEvents},
+		#{foodDrink},
+		#{historical},
+		#{leisureSports},
+		#{natureRural},
+		#{nightlifeParty},
+		#{shoppingMarket},
+		#{otherType1},
+		#{otherType2},
+		#{otherType3},
+		#{longitudeLeft},
+		#{latitudeTop},
+		#{longitudeRight},
+		#{latitudeBottom},
+		#{poliArray},
+		#{score},
+		#{rank},
+		#{memo},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

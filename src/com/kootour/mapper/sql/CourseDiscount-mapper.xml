@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.CourseDiscountMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.CourseDiscountEntity">
+		select
+		LANG_ID as langId,
+		COURSE_DISCOUNT_IDENTI_NO as courseDiscountIdentiNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		COURSE_DISCOUNT_NAME as courseDiscountName,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_DISCOUNT_TYPE as courseDiscountType,
+		COURSE_DISCOUNT_PERCENT as courseDiscountPercent,
+		COURSE_DISCOUNT_VALUE as courseDiscountValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_DISCOUNT
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.CourseDiscountEntity"
+		resultType="com.kootour.mapper.entity.CourseDiscountEntity">
+		select
+		LANG_ID as langId,
+		COURSE_DISCOUNT_IDENTI_NO as courseDiscountIdentiNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		COURSE_DISCOUNT_NAME as courseDiscountName,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_DISCOUNT_TYPE as courseDiscountType,
+		COURSE_DISCOUNT_PERCENT as courseDiscountPercent,
+		COURSE_DISCOUNT_VALUE as courseDiscountValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_DISCOUNT
+		where
+		LANG_ID =#{langId}
+		and COURSE_DISCOUNT_IDENTI_NO =#{courseDiscountIdentiNo}
+		and BGN_DATE =#{bgnDate}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.CourseDiscountEntity"
+		resultType="com.kootour.mapper.entity.CourseDiscountEntity">
+		select
+		LANG_ID as langId,
+		COURSE_DISCOUNT_IDENTI_NO as courseDiscountIdentiNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		COURSE_DISCOUNT_NAME as courseDiscountName,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_DISCOUNT_TYPE as courseDiscountType,
+		COURSE_DISCOUNT_PERCENT as courseDiscountPercent,
+		COURSE_DISCOUNT_VALUE as courseDiscountValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_DISCOUNT
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="courseDiscountIdentiNo != null and courseDiscountIdentiNo != '' ">
+			and COURSE_DISCOUNT_IDENTI_NO =#{courseDiscountIdentiNo}
+		</if>
+		<if test="bgnDate != null and bgnDate != '' ">
+			and BGN_DATE =#{bgnDate}
+		</if>
+		<if test="endDate != null and endDate != '' ">
+			and END_DATE =#{endDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.CourseDiscountEntity">
+		update COURSE_DISCOUNT set
+		LANG_ID= #{langId},
+		COURSE_DISCOUNT_IDENTI_NO= #{courseDiscountIdentiNo},
+		BGN_DATE= #{bgnDate},
+		END_DATE= #{endDate},
+		COURSE_DISCOUNT_NAME= #{courseDiscountName},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		COURSE_DISCOUNT_TYPE= #{courseDiscountType},
+		COURSE_DISCOUNT_PERCENT= #{courseDiscountPercent},
+		COURSE_DISCOUNT_VALUE= #{courseDiscountValue},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and COURSE_DISCOUNT_IDENTI_NO =#{courseDiscountIdentiNo}
+		and BGN_DATE =#{bgnDate}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.CourseDiscountEntity">
+		insert into COURSE_DISCOUNT(
+		LANG_ID,
+		COURSE_DISCOUNT_IDENTI_NO,
+		BGN_DATE,
+		END_DATE,
+		COURSE_DISCOUNT_NAME,
+		COURSE_IDENTI_NO,
+		COURSE_DISCOUNT_TYPE,
+		COURSE_DISCOUNT_PERCENT,
+		COURSE_DISCOUNT_VALUE,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{courseDiscountIdentiNo},
+		#{bgnDate},
+		#{endDate},
+		#{courseDiscountName},
+		#{courseIdentiNo},
+		#{courseDiscountType},
+		#{courseDiscountPercent},
+		#{courseDiscountValue},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

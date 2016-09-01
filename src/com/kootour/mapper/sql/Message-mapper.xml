@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.MessageMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.MessageEntity">
+		select
+		LANG_ID as langId,
+		MESSAGE_IDENTI_NO as messageIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		MESSAGE_TYPE as messageType,
+		MESSAGE_TEXT as messageText,
+		DATE_FORMAT(MESSAGE_TIME,'%Y%m%d%H%i%S') as messageTime,
+		MAIL_FLG as mailFlg,
+		READ_FLG as readFlg,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from MESSAGE
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.MessageEntity"
+		resultType="com.kootour.mapper.entity.MessageEntity">
+		select
+		LANG_ID as langId,
+		MESSAGE_IDENTI_NO as messageIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		MESSAGE_TYPE as messageType,
+		MESSAGE_TEXT as messageText,
+		DATE_FORMAT(MESSAGE_TIME,'%Y%m%d%H%i%S') as messageTime,
+		MAIL_FLG as mailFlg,
+		READ_FLG as readFlg,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from MESSAGE
+		where
+		LANG_ID =#{langId}
+		and MESSAGE_IDENTI_NO =#{messageIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.MessageEntity"
+		resultType="com.kootour.mapper.entity.MessageEntity">
+		select
+		LANG_ID as langId,
+		MESSAGE_IDENTI_NO as messageIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		MESSAGE_TYPE as messageType,
+		MESSAGE_TEXT as messageText,
+		DATE_FORMAT(MESSAGE_TIME,'%Y%m%d%H%i%S') as messageTime,
+		MAIL_FLG as mailFlg,
+		READ_FLG as readFlg,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from MESSAGE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="messageIdentiNo != null and messageIdentiNo != '' ">
+			and MESSAGE_IDENTI_NO =#{messageIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="messageType != null and messageType != '' ">
+			and MESSAGE_TYPE =#{messageType}
+		</if>
+		<if test="mailFlg != null and mailFlg != '' ">
+			and MAIL_FLG =#{mailFlg}
+		</if>
+		<if test="readFlg != null and readFlg != '' ">
+			and READ_FLG =#{readFlg}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		order by
+		MESSAGE_TIME desc
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.MessageEntity">
+		update MESSAGE set
+		LANG_ID= #{langId},
+		MESSAGE_IDENTI_NO= #{messageIdentiNo},
+		LOCALHOST_IDENTI_NO= #{localhostIdentiNo},
+		TOURIST_IDENTI_NO= #{touristIdentiNo},
+		MESSAGE_TYPE= #{messageType},
+		MESSAGE_TEXT= #{messageText},
+		MESSAGE_TIME= #{messageTime},
+		MAIL_FLG= #{mailFlg},
+		READ_FLG= #{readFlg},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and MESSAGE_IDENTI_NO =#{messageIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.MessageEntity">
+		insert into MESSAGE(
+		LANG_ID,
+		MESSAGE_IDENTI_NO,
+		LOCALHOST_IDENTI_NO,
+		TOURIST_IDENTI_NO,
+		MESSAGE_TYPE,
+		MESSAGE_TEXT,
+		MESSAGE_TIME,
+		MAIL_FLG,
+		READ_FLG,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{messageIdentiNo},
+		#{localhostIdentiNo},
+		#{touristIdentiNo},
+		#{messageType},
+		#{messageText},
+		#{messageTime},
+		#{mailFlg},
+		#{readFlg},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+	<select id="selectByConditionForChat" parameterType="com.kootour.mapper.entity.MessageEntity"
+		resultType="com.kootour.mapper.entity.MessageEntity">
+		select
+		LANG_ID as langId,
+		MESSAGE_IDENTI_NO as messageIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		MESSAGE_TYPE as messageType,
+		MESSAGE_TEXT as messageText,
+		DATE_FORMAT(MESSAGE_TIME,'%Y%m%d%H%i%S') as messageTime,
+		MAIL_FLG as mailFlg,
+		READ_FLG as readFlg,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from MESSAGE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="messageIdentiNo != null and messageIdentiNo != '' ">
+			and MESSAGE_IDENTI_NO =#{messageIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="messageType != null and messageType != '' ">
+			and MESSAGE_TYPE = "T" or MESSAGE_TYPE = "L"
+		</if>
+		<if test="mailFlg != null and mailFlg != '' ">
+			and MAIL_FLG =#{mailFlg}
+		</if>
+		<if test="readFlg != null and readFlg != '' ">
+			and READ_FLG =#{readFlg}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		order by
+		MESSAGE_TIME desc
+	</select>
+</mapper>
+
+

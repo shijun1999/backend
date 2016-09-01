@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.FavoriteMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.FavoriteEntity">
+		select
+		LANG_ID as langId,
+		FAVORITE_IDENTI_NO as favoriteIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		OBJ_TYPE as objType,
+		OBJ_IDENTI_NO as objIdentiNo,
+		DELETE_STATUS as deleteStatus,
+		OP_DATE as opDate,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from FAVORITE
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.FavoriteEntity"
+		resultType="com.kootour.mapper.entity.FavoriteEntity">
+		select
+		LANG_ID as langId,
+		FAVORITE_IDENTI_NO as favoriteIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		OBJ_TYPE as objType,
+		OBJ_IDENTI_NO as objIdentiNo,
+		DELETE_STATUS as deleteStatus,
+		OP_DATE as opDate,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from FAVORITE
+		where
+		LANG_ID =#{langId}
+		and FAVORITE_IDENTI_NO =#{favoriteIdentiNo}
+		and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		and OBJ_TYPE =#{objType}
+		and OBJ_IDENTI_NO =#{objIdentiNo}
+		and DELETE_STATUS =#{deleteStatus}
+		and OP_DATE =#{opDate}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.FavoriteEntity"
+		resultType="com.kootour.mapper.entity.FavoriteEntity">
+		select
+		LANG_ID as langId,
+		FAVORITE_IDENTI_NO as favoriteIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		OBJ_TYPE as objType,
+		OBJ_IDENTI_NO as objIdentiNo,
+		DELETE_STATUS as deleteStatus,
+		OP_DATE as opDate,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from FAVORITE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="favoriteIdentiNo != null and favoriteIdentiNo != '' ">
+			and FAVORITE_IDENTI_NO =#{favoriteIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="objType != null and objType != '' ">
+			and OBJ_TYPE =#{objType}
+		</if>
+		<if test="objIdentiNo != null and objIdentiNo != '' ">
+			and OBJ_IDENTI_NO =#{objIdentiNo}
+		</if>
+		<if test="deleteStatus != null and deleteStatus != '' ">
+			and DELETE_STATUS =#{deleteStatus}
+		</if>
+		<if test="opDate != null and opDate != '' ">
+			and OP_DATE =#{opDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.FavoriteEntity">
+		update FAVORITE set
+		LANG_ID= #{langId},
+		FAVORITE_IDENTI_NO= #{favoriteIdentiNo},
+		TOURIST_IDENTI_NO= #{touristIdentiNo},
+		OBJ_TYPE= #{objType},
+		OBJ_IDENTI_NO= #{objIdentiNo},
+		DELETE_STATUS= #{deleteStatus},
+		OP_DATE= #{opDate},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and FAVORITE_IDENTI_NO =#{favoriteIdentiNo}
+		and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		and OBJ_TYPE =#{objType}
+		and OBJ_IDENTI_NO =#{objIdentiNo}
+		and DELETE_STATUS =#{deleteStatus}
+		and OP_DATE =#{opDate}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.FavoriteEntity">
+		insert into FAVORITE(
+		LANG_ID,
+		FAVORITE_IDENTI_NO,
+		TOURIST_IDENTI_NO,
+		OBJ_TYPE,
+		OBJ_IDENTI_NO,
+		DELETE_STATUS,
+		OP_DATE,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{favoriteIdentiNo},
+		#{touristIdentiNo},
+		#{objType},
+		#{objIdentiNo},
+		#{deleteStatus},
+		#{opDate},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+	<select id="selectCountByCondition" parameterType="com.kootour.mapper.entity.FavoriteEntity"
+		resultType="int">
+		select
+		count(*)
+		from FAVORITE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="favoriteIdentiNo != null and favoriteIdentiNo != '' ">
+			and FAVORITE_IDENTI_NO =#{favoriteIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="objType != null and objType != '' ">
+			and OBJ_TYPE =#{objType}
+		</if>
+		<if test="objIdentiNo != null and objIdentiNo != '' ">
+			and OBJ_IDENTI_NO =#{objIdentiNo}
+		</if>
+		<if test="deleteStatus != null and deleteStatus != '' ">
+			and DELETE_STATUS =#{deleteStatus}
+		</if>
+		<if test="opDate != null and opDate != '' ">
+			and OP_DATE =#{opDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+
+</mapper>
+
+

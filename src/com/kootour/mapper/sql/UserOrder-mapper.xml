@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.UserOrderMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.UserOrderEntity">
+		select
+		LANG_ID as langId,
+		ORDER_IDENTI_NO as orderIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		TOURIST_IDENTI_NO as
+		touristIdentiNo,
+		RESERVATION_DATE as reservationDate,
+		SCHEDULE_OPTION_IDENTI_NO as scheduleOptionIdentiNo,
+		BGN_TIME as
+		bgnTime,
+		STATUS as status,
+		CONSENT as consent,
+		CANCEL_DATE as cancelDate,
+		ORDER_DATE as orderDate,
+		MONEY_UNIT as moneyUnit,
+		TOURIST_NUM as
+		touristNum,
+		INFANT_FREE as infantFree,
+		PRICE as price,
+		DISCOUNT_PRICE as
+		discountPrice,
+		PERSON_OR_GROUP as personOrGroup,
+		DURATION as duration,
+		DURATION_UNIT as durationUnit,
+		TOTAL_MONEY as totalMoney,
+		TIPS as tips,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as
+		createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from
+		USER_ORDER
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.UserOrderEntity"
+		resultType="com.kootour.mapper.entity.UserOrderEntity">
+		select
+		LANG_ID as langId,
+		ORDER_IDENTI_NO as orderIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as
+		localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		RESERVATION_DATE as reservationDate,
+		SCHEDULE_OPTION_IDENTI_NO as
+		scheduleOptionIdentiNo,
+		BGN_TIME as bgnTime,
+		STATUS as status,
+		CONSENT as
+		consent,
+		CANCEL_DATE as cancelDate,
+		ORDER_DATE as orderDate,
+		MONEY_UNIT
+		as moneyUnit,
+		TOURIST_NUM as touristNum,
+		INFANT_FREE as infantFree,
+		PRICE as price,
+		DISCOUNT_PRICE as discountPrice,
+		PERSON_OR_GROUP as
+		personOrGroup,
+		DURATION as duration,
+		DURATION_UNIT as durationUnit,
+		TOTAL_MONEY as totalMoney,
+		TIPS as tips,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from USER_ORDER
+		where
+		LANG_ID =#{langId}
+		and ORDER_IDENTI_NO =#{orderIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.UserOrderEntity"
+		resultType="com.kootour.mapper.entity.UserOrderEntity">
+		select
+		LANG_ID as langId,
+		ORDER_IDENTI_NO as orderIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as
+		localhostIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		RESERVATION_DATE as reservationDate,
+		SCHEDULE_OPTION_IDENTI_NO as
+		scheduleOptionIdentiNo,
+		BGN_TIME as bgnTime,
+		STATUS as status,
+		CONSENT as
+		consent,
+		CANCEL_DATE as cancelDate,
+		ORDER_DATE as orderDate,
+		MONEY_UNIT
+		as moneyUnit,
+		TOURIST_NUM as touristNum,
+		INFANT_FREE as infantFree,
+		PRICE as price,
+		DISCOUNT_PRICE as discountPrice,
+		PERSON_OR_GROUP as
+		personOrGroup,
+		DURATION as duration,
+		DURATION_UNIT as durationUnit,
+		TOTAL_MONEY as totalMoney,
+		TIPS as tips,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from USER_ORDER
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="orderIdentiNo != null and orderIdentiNo != '' ">
+			and ORDER_IDENTI_NO =#{orderIdentiNo}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="reservationDate != null and reservationDate != '' ">
+			and RESERVATION_DATE =#{reservationDate}
+		</if>
+		<if
+			test="bgnReservationDate != null and bgnReservationDate != '' and endReservationDate != null and endReservationDate != '' ">
+			and RESERVATION_DATE between #{bgnReservationDate} and
+			#{endReservationDate}
+		</if>
+		<if test="scheduleOptionIdentiNo != null and scheduleOptionIdentiNo != '' ">
+			and SCHEDULE_OPTION_IDENTI_NO =#{scheduleOptionIdentiNo}
+		</if>
+		<if test="bgnTime != null and bgnTime != '' ">
+			and BGN_TIME =#{bgnTime}
+		</if>
+		<if test="status != null and status != '' ">
+			and STATUS =#{status}
+		</if>
+		<if test="consent != null and consent != '' ">
+			and CONSENT =#{consent}
+		</if>
+		<if test="cancelDate != null and cancelDate != '' ">
+			and CANCEL_DATE =#{cancelDate}
+		</if>
+		<if
+			test="bgnCancelDate != null and bgnCancelDate != '' and endCancelDate != null and endCancelDate != '' ">
+			and CANCEL_DATE between #{bgnCancelDate} and #{endCancelDate}
+		</if>
+		<if test="orderDate != null and orderDate != '' ">
+			and ORDER_DATE =#{orderDate}
+		</if>
+		<if
+			test="bgnOrderDate != null and bgnOrderDate != '' and endOrderDate != null and endOrderDate != '' ">
+			and ORDER_DATE between #{bgnOrderDate} and #{endOrderDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.UserOrderEntity">
+		update USER_ORDER set
+		LANG_ID= #{langId},
+		ORDER_IDENTI_NO= #{orderIdentiNo},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		LOCALHOST_IDENTI_NO=
+		#{localhostIdentiNo},
+		TOURIST_IDENTI_NO= #{touristIdentiNo},
+		RESERVATION_DATE= #{reservationDate},
+		SCHEDULE_OPTION_IDENTI_NO=
+		#{scheduleOptionIdentiNo},
+		BGN_TIME= #{bgnTime},
+		STATUS= #{status},
+		CONSENT= #{consent},
+		CANCEL_DATE= #{cancelDate},
+		ORDER_DATE=
+		#{orderDate},
+		MONEY_UNIT= #{moneyUnit},
+		TOURIST_NUM= #{touristNum},
+		INFANT_FREE= #{infantFree},
+		PRICE= #{price},
+		DISCOUNT_PRICE=
+		#{discountPrice},
+		PERSON_OR_GROUP= #{personOrGroup},
+		DURATION=
+		#{duration},
+		DURATION_UNIT= #{durationUnit},
+		TOTAL_MONEY= #{totalMoney},
+		TIPS= #{tips},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and ORDER_IDENTI_NO
+		=#{orderIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.UserOrderEntity">
+		insert into USER_ORDER(
+		LANG_ID,
+		ORDER_IDENTI_NO,
+		COURSE_IDENTI_NO,
+		LOCALHOST_IDENTI_NO,
+		TOURIST_IDENTI_NO,
+		RESERVATION_DATE,
+		SCHEDULE_OPTION_IDENTI_NO,
+		BGN_TIME,
+		STATUS,
+		CONSENT,
+		CANCEL_DATE,
+		ORDER_DATE,
+		MONEY_UNIT,
+		TOURIST_NUM,
+		INFANT_FREE,
+		PRICE,
+		DISCOUNT_PRICE,
+		PERSON_OR_GROUP,
+		DURATION,
+		DURATION_UNIT,
+		TOTAL_MONEY,
+		TIPS,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{orderIdentiNo},
+		#{courseIdentiNo},
+		#{localhostIdentiNo},
+		#{touristIdentiNo},
+		#{reservationDate},
+		#{scheduleOptionIdentiNo},
+		#{bgnTime},
+		#{status},
+		#{consent},
+		#{cancelDate},
+		#{orderDate},
+		#{moneyUnit},
+		#{touristNum},
+		#{infantFree},
+		#{price},
+		#{discountPrice},
+		#{personOrGroup},
+		#{duration},
+		#{durationUnit},
+		#{totalMoney},
+		#{tips},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+	<select id="selectCountByCondition" parameterType="com.kootour.mapper.entity.UserOrderEntity"
+		resultType="int">
+		select
+		count(*)
+		from USER_ORDER
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="orderIdentiNo != null and orderIdentiNo != '' ">
+			and ORDER_IDENTI_NO =#{orderIdentiNo}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="reservationDate != null and reservationDate != '' ">
+			and RESERVATION_DATE between #{bgnReservationDate} and
+			#{endReservationDate}
+		</if>
+		<if test="timeTableIdx != null and timeTableIdx != '' ">
+			and TIME_TABLE_IDX =#{timeTableIdx}
+		</if>
+		<if test="status != null and status != '' ">
+			and STATUS =#{status}
+		</if>
+		<if test="consent != null and consent != '' ">
+			and CONSENT =#{consent}
+		</if>
+		<if test="cancelDate != null and cancelDate != '' ">
+			and CANCEL_DATE between #{bgnCancelDate} and
+			#{endCancelDate}
+		</if>
+		<if test="orderDate != null and orderDate != '' ">
+			and ORDER_DATE between #{bgnOrderDate} and #{endOrderDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+</mapper>
+
+

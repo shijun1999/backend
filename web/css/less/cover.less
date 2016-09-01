@@ -1,0 +1,100 @@
+.cover {
+    position: relative;
+    height: 600px;
+    background-image: url('@{images}/img_header.png');
+    background-size: cover;
+}
+
+.cover .cover-content {
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.cover .slogan {
+    .font-size(@sloganFontSize);
+    color: @white;
+    font-family: Avenir_Bold;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 86px;
+}
+
+.form-cover-mobile-wrapper {
+    display:none;
+    margin-bottom: 30px;
+}
+
+.cover .form-cover {
+    display: flex;
+    padding: 5px;
+    border-radius: @borderRadius;
+    background-color: rgba(237, 237, 239, 0.5);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 900px;
+}
+
+.cover .form-cover > *{
+    flex: 0 1 33.3%;
+    margin: 0 2.5px;
+}
+
+.cover .form-cover > :first-child{
+ 	 margin-left: 0;
+}
+
+.cover .form-cover > :last-child{
+ 	 margin-right: 0;
+}
+
+.cover .form-cover .form-control {
+	width: 100%;
+  .placeholder(black);
+}
+
+@media (max-width: 1200px) {
+    .cover .form-cover {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cover {
+        position: relative;
+        height: 400px;
+        background-image: url('@{images}/img_header.png');
+        background-size: cover;
+    }
+
+    .cover .slogan {
+        .font-size(5.2);
+        line-height: 66px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cover .form-cover {
+        display:none;
+    }
+
+    .form-cover-mobile-wrapper {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .cover .slogan {
+        .font-size(@sloganFontSizeSmallScreen);
+        line-height: 43px;
+    }
+}

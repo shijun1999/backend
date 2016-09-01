@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.ScheduleOptionMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.ScheduleOptionEntity">
+		select
+		LANG_ID as langId,
+		SCHEDULE_OPTION_IDENTI_NO as scheduleOptionIdentiNo,
+		COURSE_IDENTI_NO
+		as courseIdentiNo,
+		COURSE_SCHEULE_NAME as courseScheuleName,
+		BGN_DATE as
+		bgnDate,
+		END_DATE as endDate,
+		START_HOUR as startHour,
+		LATEST_START_HOUR
+		as latestStartHour,
+		RETAIL_PRICE as retailPrice,
+		COMMISION as commision,
+		PRICE as price,
+		INFANT_FREE as infantFree,
+		PROMOTION_F_LG as
+		promotionFLg,
+		PROMOTION_BGN_DATE as promotionBgnDate,
+		PROMOTION_END_DATE as promotionEndDate,
+		DISCOUNT_FLG as discountFlg,
+		DISCOUNT_PERCENT as discountPercent,
+		DISCOUNT_VALUE as discountValue,
+		LARGE_DISCOUNT_FLG as largeDiscountFlg,
+		LARGE_DISCOUNT_TYPE as
+		largeDiscountType,
+		LARGE_DISCOUNT_PERCENT as largeDiscountPercent,
+		LARGE_DISCOUNT_VALUE as largeDiscountValue,
+		LARGE_GROUP_LIMIT as
+		largeGroupLimit,
+		WORK_DAY as workDay,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from
+		SCHEDULE_OPTION
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.ScheduleOptionEntity"
+		resultType="com.kootour.mapper.entity.ScheduleOptionEntity">
+		select
+		LANG_ID as langId,
+		SCHEDULE_OPTION_IDENTI_NO as
+		scheduleOptionIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_SCHEULE_NAME as courseScheuleName,
+		BGN_DATE as bgnDate,
+		END_DATE
+		as endDate,
+		START_HOUR as startHour,
+		LATEST_START_HOUR as
+		latestStartHour,
+		RETAIL_PRICE as retailPrice,
+		COMMISION as commision,
+		PRICE as price,
+		INFANT_FREE as infantFree,
+		PROMOTION_F_LG as
+		promotionFLg,
+		PROMOTION_BGN_DATE as promotionBgnDate,
+		PROMOTION_END_DATE as promotionEndDate,
+		DISCOUNT_FLG as discountFlg,
+		DISCOUNT_PERCENT as discountPercent,
+		DISCOUNT_VALUE as discountValue,
+		LARGE_DISCOUNT_FLG as largeDiscountFlg,
+		LARGE_DISCOUNT_TYPE as
+		largeDiscountType,
+		LARGE_DISCOUNT_PERCENT as largeDiscountPercent,
+		LARGE_DISCOUNT_VALUE as largeDiscountValue,
+		LARGE_GROUP_LIMIT as
+		largeGroupLimit,
+		WORK_DAY as workDay,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from
+		SCHEDULE_OPTION
+		where
+		LANG_ID =#{langId}
+		and SCHEDULE_OPTION_IDENTI_NO
+		=#{scheduleOptionIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.ScheduleOptionEntity"
+		resultType="com.kootour.mapper.entity.ScheduleOptionEntity">
+		select
+		LANG_ID as langId,
+		SCHEDULE_OPTION_IDENTI_NO as
+		scheduleOptionIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_SCHEULE_NAME as courseScheuleName,
+		BGN_DATE as bgnDate,
+		END_DATE
+		as endDate,
+		START_HOUR as startHour,
+		LATEST_START_HOUR as
+		latestStartHour,
+		RETAIL_PRICE as retailPrice,
+		COMMISION as commision,
+		PRICE as price,
+		INFANT_FREE as infantFree,
+		PROMOTION_F_LG as
+		promotionFLg,
+		PROMOTION_BGN_DATE as promotionBgnDate,
+		PROMOTION_END_DATE as promotionEndDate,
+		DISCOUNT_FLG as discountFlg,
+		DISCOUNT_PERCENT as discountPercent,
+		DISCOUNT_VALUE as discountValue,
+		LARGE_DISCOUNT_FLG as largeDiscountFlg,
+		LARGE_DISCOUNT_TYPE as
+		largeDiscountType,
+		LARGE_DISCOUNT_PERCENT as largeDiscountPercent,
+		LARGE_DISCOUNT_VALUE as largeDiscountValue,
+		LARGE_GROUP_LIMIT as
+		largeGroupLimit,
+		WORK_DAY as workDay,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from
+		SCHEDULE_OPTION
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="scheduleOptionIdentiNo != null and scheduleOptionIdentiNo != '' ">
+			and SCHEDULE_OPTION_IDENTI_NO =#{scheduleOptionIdentiNo}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="courseScheuleName != null and courseScheuleName != '' ">
+			and COURSE_SCHEULE_NAME LIKE#{courseScheuleName}
+		</if>
+		<if test="bgnDate != null and bgnDate != '' ">
+			and BGN_DATE =#{bgnDate}
+		</if>
+		<if test="endDate != null and endDate != '' ">
+			and END_DATE =#{endDate}
+		</if>
+		<if test="startHour != null and startHour != '' ">
+			and START_HOUR =#{startHour}
+		</if>
+		<if test="latestStartHour != null and latestStartHour != '' ">
+			and LATEST_START_HOUR =#{latestStartHour}
+		</if>
+		<if test="infantFree != null and infantFree != '' ">
+			and INFANT_FREE =#{infantFree}
+		</if>
+		<if test="promotionFLg != null and promotionFLg != '' ">
+			and PROMOTION_F_LG =#{promotionFLg}
+		</if>
+		<if test="promotionBgnDate != null and promotionBgnDate != '' ">
+			and PROMOTION_BGN_DATE =#{promotionBgnDate}
+		</if>
+		<if test="promotionEndDate != null and promotionEndDate != '' ">
+			and PROMOTION_END_DATE =#{promotionEndDate}
+		</if>
+		<if test="discountFlg != null and discountFlg != '' ">
+			and DISCOUNT_FLG =#{discountFlg}
+		</if>
+		<if test="largeDiscountFlg != null and largeDiscountFlg != '' ">
+			and LARGE_DISCOUNT_FLG =#{largeDiscountFlg}
+		</if>
+		<if test="largeDiscountType != null and largeDiscountType != '' ">
+			and LARGE_DISCOUNT_TYPE =#{largeDiscountType}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.ScheduleOptionEntity">
+		update SCHEDULE_OPTION set
+		LANG_ID= #{langId},
+		SCHEDULE_OPTION_IDENTI_NO=
+		#{scheduleOptionIdentiNo},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		COURSE_SCHEULE_NAME= #{courseScheuleName},
+		BGN_DATE= #{bgnDate},
+		END_DATE= #{endDate},
+		START_HOUR= #{startHour},
+		LATEST_START_HOUR=
+		#{latestStartHour},
+		RETAIL_PRICE= #{retailPrice},
+		COMMISION=
+		#{commision},
+		PRICE= #{price},
+		INFANT_FREE= #{infantFree},
+		PROMOTION_F_LG= #{promotionFLg},
+		PROMOTION_BGN_DATE=
+		#{promotionBgnDate},
+		PROMOTION_END_DATE= #{promotionEndDate},
+		DISCOUNT_FLG= #{discountFlg},
+		DISCOUNT_PERCENT= #{discountPercent},
+		DISCOUNT_VALUE= #{discountValue},
+		LARGE_DISCOUNT_FLG=
+		#{largeDiscountFlg},
+		LARGE_DISCOUNT_TYPE= #{largeDiscountType},
+		LARGE_DISCOUNT_PERCENT= #{largeDiscountPercent},
+		LARGE_DISCOUNT_VALUE=
+		#{largeDiscountValue},
+		LARGE_GROUP_LIMIT= #{largeGroupLimit},
+		WORK_DAY=
+		#{workDay},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME=
+		now()
+		where
+		LANG_ID =#{langId}
+		and SCHEDULE_OPTION_IDENTI_NO
+		=#{scheduleOptionIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.ScheduleOptionEntity">
+		insert into
+		SCHEDULE_OPTION(
+		LANG_ID,
+		SCHEDULE_OPTION_IDENTI_NO,
+		COURSE_IDENTI_NO,
+		COURSE_SCHEULE_NAME,
+		BGN_DATE,
+		END_DATE,
+		START_HOUR,
+		LATEST_START_HOUR,
+		RETAIL_PRICE,
+		COMMISION,
+		PRICE,
+		INFANT_FREE,
+		PROMOTION_F_LG,
+		PROMOTION_BGN_DATE,
+		PROMOTION_END_DATE,
+		DISCOUNT_FLG,
+		DISCOUNT_PERCENT,
+		DISCOUNT_VALUE,
+		LARGE_DISCOUNT_FLG,
+		LARGE_DISCOUNT_TYPE,
+		LARGE_DISCOUNT_PERCENT,
+		LARGE_DISCOUNT_VALUE,
+		LARGE_GROUP_LIMIT,
+		WORK_DAY,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{scheduleOptionIdentiNo},
+		#{courseIdentiNo},
+		#{courseScheuleName},
+		#{bgnDate},
+		#{endDate},
+		#{startHour},
+		#{latestStartHour},
+		#{retailPrice},
+		#{commision},
+		#{price},
+		#{infantFree},
+		#{promotionFLg},
+		#{promotionBgnDate},
+		#{promotionEndDate},
+		#{discountFlg},
+		#{discountPercent},
+		#{discountValue},
+		#{largeDiscountFlg},
+		#{largeDiscountType},
+		#{largeDiscountPercent},
+		#{largeDiscountValue},
+		#{largeGroupLimit},
+		#{workDay},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>

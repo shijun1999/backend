@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.LanguageMatrixMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.LanguageMatrixEntity">
+		select
+		LANG_ID as langId,
+		LANG_ID_REF as langIdRef,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MATRIX
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.LanguageMatrixEntity"
+		resultType="com.kootour.mapper.entity.LanguageMatrixEntity">
+		select
+		LANG_ID as langId,
+		LANG_ID_REF as langIdRef,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MATRIX
+		where
+		LANG_ID =#{langId}
+		and LANG_ID_REF =#{langIdRef}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.LanguageMatrixEntity"
+		resultType="com.kootour.mapper.entity.LanguageMatrixEntity">
+		select
+		LANG_ID as langId,
+		LANG_ID_REF as langIdRef,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MATRIX
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="langIdRef != null and langIdRef != '' ">
+			and LANG_ID_REF =#{langIdRef}
+		</if>
+		<if test="nameInLocal != null and nameInLocal != '' ">
+			and NAME_IN_LOCAL =#{nameInLocal}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.LanguageMatrixEntity">
+		update LANGUAGE_MATRIX set
+		LANG_ID= #{langId},
+		LANG_ID_REF= #{langIdRef},
+		NAME_IN_LOCAL= #{nameInLocal},
+		DEL_FLG= #{delFlg}
+		where
+		LANG_ID =#{langId}
+		and LANG_ID_REF =#{langIdRef}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.LanguageMatrixEntity">
+		insert into LANGUAGE_MATRIX(
+		LANG_ID,
+		LANG_ID_REF,
+		NAME_IN_LOCAL,
+		DEL_FLG
+		)values(
+		#{langId},
+		#{langIdRef},
+		#{nameInLocal},
+		#{delFlg}
+		)
+	</insert>
+</mapper>
+
+

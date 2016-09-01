@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.PictureMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.PictureEntity">
+		select
+		IDENTI_NO as identiNo,
+		SEARCH_WORD as searchWord,
+		FULL_NAME as fullName,
+		OWNER_IDENTI_NO as ownerIdentiNo,
+		FULL_PATH as fullPath,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.PictureEntity"
+		resultType="com.kootour.mapper.entity.PictureEntity">
+		select
+		IDENTI_NO as identiNo,
+		SEARCH_WORD as searchWord,
+		FULL_NAME as fullName,
+		OWNER_IDENTI_NO as ownerIdentiNo,
+		FULL_PATH as fullPath,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE
+		where
+		IDENTI_NO =#{identiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.PictureEntity"
+		resultType="com.kootour.mapper.entity.PictureEntity">
+		select
+		IDENTI_NO as identiNo,
+		SEARCH_WORD as searchWord,
+		FULL_NAME as fullName,
+		OWNER_IDENTI_NO as ownerIdentiNo,
+		FULL_PATH as fullPath,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as otherType3,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE
+		where
+		IDENTI_NO is not null
+		<if test="identiNo != null and identiNo != '' ">
+			and IDENTI_NO =#{identiNo}
+		</if>
+		<if test="searchWord != null and searchWord != '' ">
+			and SEARCH_WORD LIKE#{searchWord}
+		</if>
+		<if test="ownerIdentiNo != null and ownerIdentiNo != '' ">
+			and OWNER_IDENTI_NO =#{ownerIdentiNo}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		<if
+			test="adventure != null and adventure != ''
+   or cultureArts != null and cultureArts != ''
+   or festivalEvents != null and festivalEvents != ''
+   or foodDrink != null and foodDrink != ''
+   or historical != null and historical != ''
+   or leisureSports != null and leisureSports != ''
+   or natureRural != null and natureRural != ''
+   or nightlifeParty != null and nightlifeParty != ''
+   or shoppingMarket != null and shoppingMarket != ''
+   or otherType1 != null and otherType1 != ''
+   or otherType2 != null and otherType2 != ''
+   or otherType3 != null and otherType3 != '' ">
+			and (
+			ADVENTURE =#{adventure}
+			or CULTURE_ARTS =#{cultureArts}
+			or FESTIVAL_EVENTS =#{festivalEvents}
+			or FOOD_DRINK =#{foodDrink}
+			or HISTORICAL =#{historical}
+			or LEISURE_SPORTS =#{leisureSports}
+			or NATURE_RURAL =#{natureRural}
+			or NIGHTLIFE_PARTY =#{nightlifeParty}
+			or SHOPPING_MARKET =#{shoppingMarket}
+			or OTHER_TYPE1 =#{otherType1}
+			or OTHER_TYPE2 =#{otherType2}
+			or OTHER_TYPE3 =#{otherType3}
+			)
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.PictureEntity">
+		update PICTURE set
+		IDENTI_NO= #{identiNo},
+		SEARCH_WORD= #{searchWord},
+		FULL_NAME= #{fullName},
+		OWNER_IDENTI_NO= #{ownerIdentiNo},
+		FULL_PATH= #{fullPath},
+		ADVENTURE= #{adventure},
+		CULTURE_ARTS= #{cultureArts},
+		FESTIVAL_EVENTS= #{festivalEvents},
+		FOOD_DRINK= #{foodDrink},
+		HISTORICAL= #{historical},
+		LEISURE_SPORTS= #{leisureSports},
+		NATURE_RURAL= #{natureRural},
+		NIGHTLIFE_PARTY= #{nightlifeParty},
+		SHOPPING_MARKET= #{shoppingMarket},
+		OTHER_TYPE1= #{otherType1},
+		OTHER_TYPE2= #{otherType2},
+		OTHER_TYPE3= #{otherType3},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		IDENTI_NO =#{identiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.PictureEntity">
+		insert into PICTURE(
+		IDENTI_NO,
+		SEARCH_WORD,
+		FULL_NAME,
+		OWNER_IDENTI_NO,
+		FULL_PATH,
+		ADVENTURE,
+		CULTURE_ARTS,
+		FESTIVAL_EVENTS,
+		FOOD_DRINK,
+		HISTORICAL,
+		LEISURE_SPORTS,
+		NATURE_RURAL,
+		NIGHTLIFE_PARTY,
+		SHOPPING_MARKET,
+		OTHER_TYPE1,
+		OTHER_TYPE2,
+		OTHER_TYPE3,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{identiNo},
+		#{searchWord},
+		#{fullName},
+		#{ownerIdentiNo},
+		#{fullPath},
+		#{adventure},
+		#{cultureArts},
+		#{festivalEvents},
+		#{foodDrink},
+		#{historical},
+		#{leisureSports},
+		#{natureRural},
+		#{nightlifeParty},
+		#{shoppingMarket},
+		#{otherType1},
+		#{otherType2},
+		#{otherType3},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

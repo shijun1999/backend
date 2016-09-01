@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.CourseMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.CourseEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_CODE as courseCode,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COURSE_TYPE as courseType,
+		FULL_NAME as fullName,
+		SHORT_NAME as shortName,
+		INDEX_CHAR as indexChar,
+		LOCATION_KEY as locationKey,
+		SEARCH_WORD as searchWord,
+		COURSE_CONTENT
+		as courseContent,
+		ADDITIONAL_INFO as additionalInfo,
+		DURATION as
+		duration,
+		DURATION_UNIT as durationUnit,
+		TOUR_LOCATION as tourLocation,
+		MEETUP_LOCATION as meetupLocation,
+		MAX_TOURIST_NUM as maxTouristNum,
+		MIN_TOURIST_NUM as minTouristNum,
+		MONEY_UNIT as moneyUnit,
+		PERSON_OR_GROUP as personOrGroup,
+		MIN_HOUR_ADVANCE as minHourAdvance,
+		ADVENTURE as adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as
+		festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as
+		otherType3,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.CourseEntity"
+		resultType="com.kootour.mapper.entity.CourseEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_CODE as courseCode,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COURSE_TYPE as courseType,
+		FULL_NAME as fullName,
+		SHORT_NAME as
+		shortName,
+		INDEX_CHAR as indexChar,
+		LOCATION_KEY as locationKey,
+		SEARCH_WORD as searchWord,
+		COURSE_CONTENT as courseContent,
+		ADDITIONAL_INFO as additionalInfo,
+		DURATION as duration,
+		DURATION_UNIT
+		as durationUnit,
+		TOUR_LOCATION as tourLocation,
+		MEETUP_LOCATION as
+		meetupLocation,
+		MAX_TOURIST_NUM as maxTouristNum,
+		MIN_TOURIST_NUM as
+		minTouristNum,
+		MONEY_UNIT as moneyUnit,
+		PERSON_OR_GROUP as
+		personOrGroup,
+		MIN_HOUR_ADVANCE as minHourAdvance,
+		ADVENTURE as
+		adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as
+		festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as
+		otherType3,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE
+		where
+		LANG_ID =#{langId}
+		and COURSE_IDENTI_NO =#{courseIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.CourseEntity"
+		resultType="com.kootour.mapper.entity.CourseEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		COURSE_CODE as courseCode,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COURSE_TYPE as courseType,
+		FULL_NAME as fullName,
+		SHORT_NAME as
+		shortName,
+		INDEX_CHAR as indexChar,
+		LOCATION_KEY as locationKey,
+		SEARCH_WORD as searchWord,
+		COURSE_CONTENT as courseContent,
+		ADDITIONAL_INFO as additionalInfo,
+		DURATION as duration,
+		DURATION_UNIT
+		as durationUnit,
+		TOUR_LOCATION as tourLocation,
+		MEETUP_LOCATION as
+		meetupLocation,
+		MAX_TOURIST_NUM as maxTouristNum,
+		MIN_TOURIST_NUM as
+		minTouristNum,
+		MONEY_UNIT as moneyUnit,
+		PERSON_OR_GROUP as
+		personOrGroup,
+		MIN_HOUR_ADVANCE as minHourAdvance,
+		ADVENTURE as
+		adventure,
+		CULTURE_ARTS as cultureArts,
+		FESTIVAL_EVENTS as
+		festivalEvents,
+		FOOD_DRINK as foodDrink,
+		HISTORICAL as historical,
+		LEISURE_SPORTS as leisureSports,
+		NATURE_RURAL as natureRural,
+		NIGHTLIFE_PARTY as nightlifeParty,
+		SHOPPING_MARKET as shoppingMarket,
+		OTHER_TYPE1 as otherType1,
+		OTHER_TYPE2 as otherType2,
+		OTHER_TYPE3 as
+		otherType3,
+		OK_FLG as okFlg,
+		USE_LANG_ID as useLangId,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="courseCode != null and courseCode != '' ">
+			and COURSE_CODE =#{courseCode}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="courseType != null and courseType != '' ">
+			and COURSE_TYPE =#{courseType}
+		</if>
+		<if test="fullName != null and fullName != '' ">
+			and FULL_NAME LIKE#{fullName}
+		</if>
+		<if test="locationKey != null and locationKey != '' ">
+			and LOCATION_KEY LIKE#{locationKey}
+		</if>
+		<if test="searchWord != null and searchWord != '' ">
+			and SEARCH_WORD LIKE#{searchWord}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		<if
+			test="adventure != null and adventure != ''
+   or cultureArts != null and cultureArts != ''
+   or festivalEvents != null and festivalEvents != ''
+   or foodDrink != null and foodDrink != ''
+   or historical != null and historical != ''
+   or leisureSports != null and leisureSports != ''
+   or natureRural != null and natureRural != ''
+   or nightlifeParty != null and nightlifeParty != ''
+   or shoppingMarket != null and shoppingMarket != ''
+   or otherType1 != null and otherType1 != ''
+   or otherType2 != null and otherType2 != ''
+   or otherType3 != null and otherType3 != '' ">
+			and (
+			ADVENTURE =#{adventure}
+			or CULTURE_ARTS =#{cultureArts}
+			or
+			FESTIVAL_EVENTS =#{festivalEvents}
+			or FOOD_DRINK =#{foodDrink}
+			or
+			HISTORICAL =#{historical}
+			or LEISURE_SPORTS =#{leisureSports}
+			or
+			NATURE_RURAL =#{natureRural}
+			or NIGHTLIFE_PARTY =#{nightlifeParty}
+			or
+			SHOPPING_MARKET =#{shoppingMarket}
+			or OTHER_TYPE1 =#{otherType1}
+			or
+			OTHER_TYPE2 =#{otherType2}
+			or OTHER_TYPE3 =#{otherType3}
+			)
+		</if>
+	</select>
+
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.CourseEntity">
+		update COURSE set
+		LANG_ID=
+		#{langId},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		COURSE_CODE=
+		#{courseCode},
+		LOCALHOST_IDENTI_NO= #{localhostIdentiNo},
+		COURSE_TYPE=
+		#{courseType},
+		FULL_NAME= #{fullName},
+		SHORT_NAME= #{shortName},
+		INDEX_CHAR= #{indexChar},
+		LOCATION_KEY= #{locationKey},
+		SEARCH_WORD=
+		#{searchWord},
+		COURSE_CONTENT= #{courseContent},
+		ADDITIONAL_INFO=
+		#{additionalInfo},
+		DURATION= #{duration},
+		DURATION_UNIT=
+		#{durationUnit},
+		TOUR_LOCATION= #{tourLocation},
+		MEETUP_LOCATION=
+		#{meetupLocation},
+		MAX_TOURIST_NUM= #{maxTouristNum},
+		MIN_TOURIST_NUM=
+		#{minTouristNum},
+		MONEY_UNIT= #{moneyUnit},
+		WORK_DAY= '',
+		PERSON_OR_GROUP= #{personOrGroup},
+		MIN_HOUR_ADVANCE= #{minHourAdvance},
+		ADVENTURE= #{adventure},
+		CULTURE_ARTS= #{cultureArts},
+		FESTIVAL_EVENTS=
+		#{festivalEvents},
+		FOOD_DRINK= #{foodDrink},
+		HISTORICAL= #{historical},
+		LEISURE_SPORTS= #{leisureSports},
+		NATURE_RURAL= #{natureRural},
+		NIGHTLIFE_PARTY= #{nightlifeParty},
+		SHOPPING_MARKET= #{shoppingMarket},
+		OTHER_TYPE1= #{otherType1},
+		OTHER_TYPE2= #{otherType2},
+		OTHER_TYPE3=
+		#{otherType3},
+		OK_FLG= #{okFlg},
+		USE_LANG_ID= #{useLangId},
+		DEL_FLG=
+		#{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID
+		=#{langId}
+		and COURSE_IDENTI_NO =#{courseIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.CourseEntity">
+		insert into COURSE(
+		LANG_ID,
+		COURSE_IDENTI_NO,
+		COURSE_CODE,
+		LOCALHOST_IDENTI_NO,
+		COURSE_TYPE,
+		FULL_NAME,
+		SHORT_NAME,
+		INDEX_CHAR,
+		LOCATION_KEY,
+		SEARCH_WORD,
+		COURSE_CONTENT,
+		ADDITIONAL_INFO,
+		DURATION,
+		DURATION_UNIT,
+		TOUR_LOCATION,
+		MEETUP_LOCATION,
+		MAX_TOURIST_NUM,
+		MIN_TOURIST_NUM,
+		MONEY_UNIT,
+		WORK_DAY,
+		PERSON_OR_GROUP,
+		MIN_HOUR_ADVANCE,
+		ADVENTURE,
+		CULTURE_ARTS,
+		FESTIVAL_EVENTS,
+		FOOD_DRINK,
+		HISTORICAL,
+		LEISURE_SPORTS,
+		NATURE_RURAL,
+		NIGHTLIFE_PARTY,
+		SHOPPING_MARKET,
+		OTHER_TYPE1,
+		OTHER_TYPE2,
+		OTHER_TYPE3,
+		OK_FLG,
+		USE_LANG_ID,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{courseIdentiNo},
+		#{courseCode},
+		#{localhostIdentiNo},
+		#{courseType},
+		#{fullName},
+		#{shortName},
+		#{indexChar},
+		#{locationKey},
+		#{searchWord},
+		#{courseContent},
+		#{additionalInfo},
+		#{duration},
+		#{durationUnit},
+		#{tourLocation},
+		#{meetupLocation},
+		#{maxTouristNum},
+		#{minTouristNum},
+		#{moneyUnit},
+		'',
+		#{personOrGroup},
+		#{minHourAdvance},
+		#{adventure},
+		#{cultureArts},
+		#{festivalEvents},
+		#{foodDrink},
+		#{historical},
+		#{leisureSports},
+		#{natureRural},
+		#{nightlifeParty},
+		#{shoppingMarket},
+		#{otherType1},
+		#{otherType2},
+		#{otherType3},
+		#{okFlg},
+		#{useLangId},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+
+	<select id="selectCountByCondition" parameterType="com.kootour.mapper.entity.CourseEntity"
+		resultType="int">
+		select
+		count(*) as count
+		from COURSE
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="courseCode != null and courseCode != '' ">
+			and COURSE_CODE =#{courseCode}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="courseType != null and courseType != '' ">
+			and COURSE_TYPE =#{courseType}
+		</if>
+		<if test="fullName != null and fullName != '' ">
+			and FULL_NAME LIKE#{fullName}
+		</if>
+		<if test="locationKey != null and locationKey != '' ">
+			and LOCATION_KEY LIKE#{locationKey}
+		</if>
+		<if test="searchWord != null and searchWord != '' ">
+			and SEARCH_WORD LIKE#{searchWord}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+		<if
+			test="adventure != null and adventure != ''
+   or cultureArts != null and cultureArts != ''
+   or festivalEvents != null and festivalEvents != ''
+   or foodDrink != null and foodDrink != ''
+   or historical != null and historical != ''
+   or leisureSports != null and leisureSports != ''
+   or natureRural != null and natureRural != ''
+   or nightlifeParty != null and nightlifeParty != ''
+   or shoppingMarket != null and shoppingMarket != ''
+   or otherType1 != null and otherType1 != ''
+   or otherType2 != null and otherType2 != ''
+   or otherType3 != null and otherType3 != '' ">
+			and (
+			ADVENTURE =#{adventure}
+			or CULTURE_ARTS =#{cultureArts}
+			or
+			FESTIVAL_EVENTS =#{festivalEvents}
+			or FOOD_DRINK =#{foodDrink}
+			or
+			HISTORICAL =#{historical}
+			or LEISURE_SPORTS =#{leisureSports}
+			or
+			NATURE_RURAL =#{natureRural}
+			or NIGHTLIFE_PARTY =#{nightlifeParty}
+			or
+			SHOPPING_MARKET =#{shoppingMarket}
+			or OTHER_TYPE1 =#{otherType1}
+			or
+			OTHER_TYPE2 =#{otherType2}
+			or OTHER_TYPE3 =#{otherType3}
+			)
+		</if>
+	</select>
+
+</mapper>
+
+

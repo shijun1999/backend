@@ -1,0 +1,298 @@
+.boxshadow() {
+    box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.12);
+}
+
+.bigboxshadow() {
+    box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.12);
+}
+
+
+//Url
+@import "variables";
+@import "mixins";
+
+
+@images: "../../images";
+@fonts: "../fonts";
+
+@import "ie";
+@import "fonts";
+@import "navbar";
+@import "breadcrumb";
+@import "footer";
+@import "form";
+@import "carousel";
+@import "tour";
+@import "cover";
+@import "city";
+@import "section";
+@import "buttons";
+@import "reviews";
+@import "guide";
+@import "tour-detail";
+@import "widget";
+@import "datepicker";
+@import "favorites";
+@import "vote";
+@import "table";
+@import "login";
+@import "purchase";
+@import "welcome";
+@import "notification";
+@import "message-list";
+@import "message";
+@import "strength";
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1190px;
+    }
+}
+
+html {
+  font-size: 62.5%
+}
+
+body {
+  font-family: Avenir_Regular;
+  line-height: @lineheight;
+  background-color: @body-background;
+  color: @body-color;
+  .font-size(@defaultFontSize);
+}
+
+body.full-height {
+    min-height: 100vh;
+}
+
+i {
+  font-family: Avenir_Italic;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Avenir_DemiBold;
+}
+
+h1.title-page {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  .font-size(@H1FontSize);
+}
+
+h2 {
+  .font-size(@H2FontSize);
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        .font-size(@H1FontSizeSmallScreen);
+    }
+
+    h2 {
+        .font-size(@H2FontSizeSmallScreen);
+    }
+}
+
+
+a {
+  color: @blue;
+}
+
+a.nocolor {
+  color: @body-color;
+}
+
+a:hover {
+  color: @blue;
+}
+
+a:hover, a:focus {
+    color: @navbarhover;
+}
+
+iframe.video {
+    max-width: 100%;
+    width: 280px;
+    height: 160px;
+}
+
+ul.list-style-none {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.title {
+  display:block;
+  padding-bottom: 20px;
+  .font-size(@titleFontSize);
+  font-family: Avenir_DemiBold;
+  .blue();
+}
+
+
+
+
+.initlineheight {
+  line-height: @lineheight;
+}
+
+.blue {
+  color: @blue;
+}
+
+.black {
+  color: black;
+}
+
+.phone-icon {
+    width: calc(@iconWidth * 4);
+    max-width: calc(@iconWidth * 10);
+    margin: 15px auto;
+    border-radius: 50%;
+    border: 3px solid @blue;
+}
+
+.phone-icon img {
+    width: 100%;
+    padding: 20px;
+}
+
+.icon {
+  width: @iconWidth;
+  max-width: @iconWidth;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.medium-icon {
+    width: calc(@iconWidth / 1.5);
+    max-width: calc(@iconWidth / 1.5);
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.small-icon {
+  width: calc(@iconWidth / 3);
+  max-width: calc(@iconWidth / 3);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.borderbottom {
+  border-bottom: 1px solid @body-background;
+}
+
+.bordertop {
+  border-top: 1px solid @body-background;
+}
+
+.divider {
+    .borderbottom();
+    margin: 15px 0;
+}
+
+.tour-thumbnail {
+    max-width: 350px;
+    margin-bottom: 15px;
+}
+
+.user-thumbnail {
+    width: 120px;
+    height: 120px;
+    border: 3px solid @blue;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.user-small-thumbnail {
+    width: 60px;
+    height: 60px;
+    border: 1.5px solid @blue;
+    margin-bottom: 7.5px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.user-extra-small-thumbnail { //Tchat
+    width: 45px;
+    height: 45px;
+    border: 1.5px solid @blue;
+    margin-bottom: 3.5px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.faq {
+    margin-bottom: 10px;
+}
+
+ul.indicators {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+ul.indicators li {
+    padding-left: 1em; 
+    text-indent: -.7em;
+    display: inline;
+    cursor: pointer;
+}
+
+ul.indicators li:before {
+    font-size: 35px;
+    content: "• ";
+    color: @body-background;
+}
+
+ul.indicators li.active:before {
+    font-size: 35px;
+    content: "• ";
+    color: @blue;
+}
+
+.subtitle {
+  /*display:block;*/
+  .font-size(@subtitleFontSize);
+  .blue();
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.nopadding {
+  padding: 0;
+}
+
+.nomargin {
+  margin: 0;
+}
+
+
+/* Travel and travelers */
+@media screen and (max-width: 1200px) {
+  .time-wrapper,
+  .travelers-wrapper {
+    margin: 10px 0px;
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .user-thumbnail {
+    width: 60px;
+    height: 60px;
+    border: 1.5px solid @blue;
+  }
+
+  .user-small-thumbnail {
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid @blue;
+  }
+}

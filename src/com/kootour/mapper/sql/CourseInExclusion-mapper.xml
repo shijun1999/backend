@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.CourseInExclusionMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.CourseInExclusionEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IN_EXCLUSION_IDENTI_NO as courseInExclusionIdentiNo,
+		SEQUES_NO as sequesNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		IN_EXCLUSION_TYPE as inExclusionType,
+		IN_EXCLUSION as inExclusion,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_IN_EXCLUSION
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.CourseInExclusionEntity"
+		resultType="com.kootour.mapper.entity.CourseInExclusionEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IN_EXCLUSION_IDENTI_NO as courseInExclusionIdentiNo,
+		SEQUES_NO as sequesNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		IN_EXCLUSION_TYPE as inExclusionType,
+		IN_EXCLUSION as inExclusion,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_IN_EXCLUSION
+		where
+		LANG_ID =#{langId}
+		and COURSE_IN_EXCLUSION_IDENTI_NO =#{courseInExclusionIdentiNo}
+		and SEQUES_NO =#{sequesNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.CourseInExclusionEntity"
+		resultType="com.kootour.mapper.entity.CourseInExclusionEntity">
+		select
+		LANG_ID as langId,
+		COURSE_IN_EXCLUSION_IDENTI_NO as courseInExclusionIdentiNo,
+		SEQUES_NO as sequesNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		IN_EXCLUSION_TYPE as inExclusionType,
+		IN_EXCLUSION as inExclusion,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_IN_EXCLUSION
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if
+			test="courseInExclusionIdentiNo != null and courseInExclusionIdentiNo != '' ">
+			and COURSE_IN_EXCLUSION_IDENTI_NO =#{courseInExclusionIdentiNo}
+		</if>
+		<if test="sequesNo != null and sequesNo != '' ">
+			and SEQUES_NO =#{sequesNo}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="inExclusionType != null and inExclusionType != '' ">
+			and IN_EXCLUSION_TYPE =#{inExclusionType}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.CourseInExclusionEntity">
+		update COURSE_IN_EXCLUSION set
+		LANG_ID= #{langId},
+		COURSE_IN_EXCLUSION_IDENTI_NO= #{courseInExclusionIdentiNo},
+		SEQUES_NO= #{sequesNo},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		IN_EXCLUSION_TYPE= #{inExclusionType},
+		IN_EXCLUSION= #{inExclusion},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and COURSE_IN_EXCLUSION_IDENTI_NO =#{courseInExclusionIdentiNo}
+		and SEQUES_NO =#{sequesNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.CourseInExclusionEntity">
+		insert into COURSE_IN_EXCLUSION(
+		LANG_ID,
+		COURSE_IN_EXCLUSION_IDENTI_NO,
+		SEQUES_NO,
+		COURSE_IDENTI_NO,
+		IN_EXCLUSION_TYPE,
+		IN_EXCLUSION,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{courseInExclusionIdentiNo},
+		#{sequesNo},
+		#{courseIdentiNo},
+		#{inExclusionType},
+		#{inExclusion},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

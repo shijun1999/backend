@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.ExtraOptionMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.ExtraOptionEntity">
+		select
+		LANG_ID as langId,
+		EXTRA_OPTION_IDENTI_NO as extraOptionIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		SCHEDULE_OPTION_IDENTI_NO as scheduleOptionIdentiNo,
+		DISP_ORDER as dispOrder,
+		EXTRA_OPTION_NAME as extraOptionName,
+		EXTRA_PRICE as extraPrice,
+		EXTRA_TIME as extraTime,
+		EXTRA_UNIT as extraUnit,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from EXTRA_OPTION
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.ExtraOptionEntity"
+		resultType="com.kootour.mapper.entity.ExtraOptionEntity">
+		select
+		LANG_ID as langId,
+		EXTRA_OPTION_IDENTI_NO as extraOptionIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		SCHEDULE_OPTION_IDENTI_NO as scheduleOptionIdentiNo,
+		DISP_ORDER as dispOrder,
+		EXTRA_OPTION_NAME as extraOptionName,
+		EXTRA_PRICE as extraPrice,
+		EXTRA_TIME as extraTime,
+		EXTRA_UNIT as extraUnit,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from EXTRA_OPTION
+		where
+		LANG_ID =#{langId}
+		and EXTRA_OPTION_IDENTI_NO =#{extraOptionIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.ExtraOptionEntity"
+		resultType="com.kootour.mapper.entity.ExtraOptionEntity">
+		select
+		LANG_ID as langId,
+		EXTRA_OPTION_IDENTI_NO as extraOptionIdentiNo,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		SCHEDULE_OPTION_IDENTI_NO as scheduleOptionIdentiNo,
+		DISP_ORDER as dispOrder,
+		EXTRA_OPTION_NAME as extraOptionName,
+		EXTRA_PRICE as extraPrice,
+		EXTRA_TIME as extraTime,
+		EXTRA_UNIT as extraUnit,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from EXTRA_OPTION
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="extraOptionIdentiNo != null and extraOptionIdentiNo != '' ">
+			and EXTRA_OPTION_IDENTI_NO =#{extraOptionIdentiNo}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="scheduleOptionIdentiNo != null and scheduleOptionIdentiNo != '' ">
+			and SCHEDULE_OPTION_IDENTI_NO =#{scheduleOptionIdentiNo}
+		</if>
+		<if test="extraOptionName != null and extraOptionName != '' ">
+			and EXTRA_OPTION_NAME LIKE#{extraOptionName}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.ExtraOptionEntity">
+		update EXTRA_OPTION set
+		LANG_ID= #{langId},
+		EXTRA_OPTION_IDENTI_NO= #{extraOptionIdentiNo},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		LOCALHOST_IDENTI_NO= #{localhostIdentiNo},
+		SCHEDULE_OPTION_IDENTI_NO= #{scheduleOptionIdentiNo},
+		DISP_ORDER= #{dispOrder},
+		EXTRA_OPTION_NAME= #{extraOptionName},
+		EXTRA_PRICE= #{extraPrice},
+		EXTRA_TIME= #{extraTime},
+		EXTRA_UNIT= #{extraUnit},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and EXTRA_OPTION_IDENTI_NO =#{extraOptionIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.ExtraOptionEntity">
+		insert into EXTRA_OPTION(
+		LANG_ID,
+		EXTRA_OPTION_IDENTI_NO,
+		COURSE_IDENTI_NO,
+		LOCALHOST_IDENTI_NO,
+		SCHEDULE_OPTION_IDENTI_NO,
+		DISP_ORDER,
+		EXTRA_OPTION_NAME,
+		EXTRA_PRICE,
+		EXTRA_TIME,
+		EXTRA_UNIT,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{extraOptionIdentiNo},
+		#{courseIdentiNo},
+		#{localhostIdentiNo},
+		#{scheduleOptionIdentiNo},
+		#{dispOrder},
+		#{extraOptionName},
+		#{extraPrice},
+		#{extraTime},
+		#{extraUnit},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

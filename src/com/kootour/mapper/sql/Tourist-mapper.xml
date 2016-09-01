@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.TouristMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.TouristEntity">
+		select
+		LANG_ID as langId,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		LAST_NAME as lastName,
+		FIRST_NAME
+		as firstName,
+		SHORT_NAME as shortName,
+		SEX as sex,
+		BIRTHDAY as birthday,
+		LOGIN_TYPE as loginType,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		TEL_CODE as telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PICTURE as picture,
+		LOCATION as location,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from TOURIST
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.TouristEntity"
+		resultType="com.kootour.mapper.entity.TouristEntity">
+		select
+		LANG_ID as langId,
+		TOURIST_IDENTI_NO as
+		touristIdentiNo,
+		LAST_NAME as lastName,
+		FIRST_NAME as firstName,
+		SHORT_NAME as shortName,
+		SEX as sex,
+		BIRTHDAY as birthday,
+		LOGIN_TYPE as
+		loginType,
+		LOGIN_ID as loginId,
+		PASSWORD as password,
+		TEL_CODE as
+		telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PICTURE as picture,
+		LOCATION as
+		location,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as
+		createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from
+		TOURIST
+		where
+		LANG_ID =#{langId}
+		and TOURIST_IDENTI_NO
+		=#{touristIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.TouristEntity"
+		resultType="com.kootour.mapper.entity.TouristEntity">
+		select
+		LANG_ID as langId,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		LAST_NAME as lastName,
+		FIRST_NAME as firstName,
+		SHORT_NAME as shortName,
+		SEX as sex,
+		BIRTHDAY as birthday,
+		LOGIN_TYPE as loginType,
+		LOGIN_ID as
+		loginId,
+		PASSWORD as password,
+		TEL_CODE as telCode,
+		TEL_NO as telNo,
+		EMAIL as email,
+		PICTURE as picture,
+		LOCATION as location,
+		DEL_FLG as
+		delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from TOURIST
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="lastName != null and lastName != '' ">
+			and LAST_NAME =#{lastName}
+		</if>
+		<if test="firstName != null and firstName != '' ">
+			and FIRST_NAME =#{firstName}
+		</if>
+		<if test="loginType != null and loginType != '' ">
+			and LOGIN_TYPE =#{loginType}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.TouristEntity">
+		update TOURIST set
+		LANG_ID= #{langId},
+		TOURIST_IDENTI_NO= #{touristIdentiNo},
+		LAST_NAME=
+		#{lastName},
+		FIRST_NAME= #{firstName},
+		SHORT_NAME= #{shortName},
+		SEX=
+		#{sex},
+		BIRTHDAY= #{birthday},
+		LOGIN_TYPE= #{loginType},
+		LOGIN_ID=
+		#{loginId},
+		PASSWORD= #{password},
+		TEL_CODE= #{telCode},
+		TEL_NO=
+		#{telNo},
+		EMAIL= #{email},
+		PICTURE= #{picture},
+		LOCATION= #{location},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and TOURIST_IDENTI_NO =#{touristIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.TouristEntity">
+		insert into TOURIST(
+		LANG_ID,
+		TOURIST_IDENTI_NO,
+		LAST_NAME,
+		FIRST_NAME,
+		SHORT_NAME,
+		SEX,
+		BIRTHDAY,
+		LOGIN_TYPE,
+		LOGIN_ID,
+		PASSWORD,
+		TEL_CODE,
+		TEL_NO,
+		EMAIL,
+		PICTURE,
+		LOCATION,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{touristIdentiNo},
+		#{lastName},
+		#{firstName},
+		#{shortName},
+		#{sex},
+		#{birthday},
+		#{loginType},
+		#{loginId},
+		#{password},
+		#{telCode},
+		#{telNo},
+		#{email},
+		#{picture},
+		#{location},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

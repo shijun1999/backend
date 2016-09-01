@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.PictureCommentMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.PictureCommentEntity">
+		select
+		LANG_ID as langId,
+		PICTURE_IDENTI_NO as pictureIdentiNo,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE_COMMENT
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.PictureCommentEntity"
+		resultType="com.kootour.mapper.entity.PictureCommentEntity">
+		select
+		LANG_ID as langId,
+		PICTURE_IDENTI_NO as pictureIdentiNo,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE_COMMENT
+		where
+		LANG_ID =#{langId}
+		and PICTURE_IDENTI_NO =#{pictureIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.PictureCommentEntity"
+		resultType="com.kootour.mapper.entity.PictureCommentEntity">
+		select
+		LANG_ID as langId,
+		PICTURE_IDENTI_NO as pictureIdentiNo,
+		MEMO as memo,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from PICTURE_COMMENT
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="pictureIdentiNo != null and pictureIdentiNo != '' ">
+			and PICTURE_IDENTI_NO =#{pictureIdentiNo}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.PictureCommentEntity">
+		update PICTURE_COMMENT set
+		LANG_ID= #{langId},
+		PICTURE_IDENTI_NO= #{pictureIdentiNo},
+		MEMO= #{memo},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and PICTURE_IDENTI_NO =#{pictureIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.PictureCommentEntity">
+		insert into PICTURE_COMMENT(
+		LANG_ID,
+		PICTURE_IDENTI_NO,
+		MEMO,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{pictureIdentiNo},
+		#{memo},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

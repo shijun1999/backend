@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.CourseCommentMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.CourseCommentEntity">
+		select
+		LANG_ID as langId,
+		COURSE_COMMENT_IDENTI_NO as courseCommentIdentiNo,
+		COMMENT_TYPE as commentType,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COMMENT_DATE as commentDate,
+		SCORE as score,
+		COMMENT as comment,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_COMMENT
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.CourseCommentEntity"
+		resultType="com.kootour.mapper.entity.CourseCommentEntity">
+		select
+		LANG_ID as langId,
+		COURSE_COMMENT_IDENTI_NO as courseCommentIdentiNo,
+		COMMENT_TYPE as commentType,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COMMENT_DATE as commentDate,
+		SCORE as score,
+		COMMENT as comment,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_COMMENT
+		where
+		LANG_ID =#{langId}
+		and COURSE_COMMENT_IDENTI_NO =#{courseCommentIdentiNo}
+		and COMMENT_TYPE =#{commentType}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.CourseCommentEntity"
+		resultType="com.kootour.mapper.entity.CourseCommentEntity">
+		select
+		LANG_ID as langId,
+		COURSE_COMMENT_IDENTI_NO as courseCommentIdentiNo,
+		COMMENT_TYPE as commentType,
+		COURSE_IDENTI_NO as courseIdentiNo,
+		TOURIST_IDENTI_NO as touristIdentiNo,
+		LOCALHOST_IDENTI_NO as localhostIdentiNo,
+		COMMENT_DATE as commentDate,
+		SCORE as score,
+		COMMENT as comment,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from COURSE_COMMENT
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="courseCommentIdentiNo != null and courseCommentIdentiNo != '' ">
+			and COURSE_COMMENT_IDENTI_NO =#{courseCommentIdentiNo}
+		</if>
+		<if test="commentType != null and commentType != '' ">
+			and COMMENT_TYPE =#{commentType}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.CourseCommentEntity">
+		update COURSE_COMMENT set
+		LANG_ID= #{langId},
+		COURSE_COMMENT_IDENTI_NO= #{courseCommentIdentiNo},
+		COMMENT_TYPE= #{commentType},
+		COURSE_IDENTI_NO= #{courseIdentiNo},
+		TOURIST_IDENTI_NO= #{touristIdentiNo},
+		LOCALHOST_IDENTI_NO= #{localhostIdentiNo},
+		COMMENT_DATE= #{commentDate},
+		SCORE= #{score},
+		COMMENT= #{comment},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and COURSE_COMMENT_IDENTI_NO =#{courseCommentIdentiNo}
+		and COMMENT_TYPE =#{commentType}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.CourseCommentEntity">
+		insert into COURSE_COMMENT(
+		LANG_ID,
+		COURSE_COMMENT_IDENTI_NO,
+		COMMENT_TYPE,
+		COURSE_IDENTI_NO,
+		TOURIST_IDENTI_NO,
+		LOCALHOST_IDENTI_NO,
+		COMMENT_DATE,
+		SCORE,
+		COMMENT,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{courseCommentIdentiNo},
+		#{commentType},
+		#{courseIdentiNo},
+		#{touristIdentiNo},
+		#{localhostIdentiNo},
+		#{commentDate},
+		#{score},
+		#{comment},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+
+	<select id="selectCountByCondition" parameterType="com.kootour.mapper.entity.CourseCommentEntity"
+		resultType="int">
+		select
+		count(*)
+		from COURSE_COMMENT
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="courseCommentIdentiNo != null and courseCommentIdentiNo != '' ">
+			and COURSE_COMMENT_IDENTI_NO =#{courseCommentIdentiNo}
+		</if>
+		<if test="commentType != null and commentType != '' ">
+			and COMMENT_TYPE =#{commentType}
+		</if>
+		<if test="courseIdentiNo != null and courseIdentiNo != '' ">
+			and COURSE_IDENTI_NO =#{courseIdentiNo}
+		</if>
+		<if test="touristIdentiNo != null and touristIdentiNo != '' ">
+			and TOURIST_IDENTI_NO =#{touristIdentiNo}
+		</if>
+		<if test="localhostIdentiNo != null and localhostIdentiNo != '' ">
+			and LOCALHOST_IDENTI_NO =#{localhostIdentiNo}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+
+</mapper>
+
+

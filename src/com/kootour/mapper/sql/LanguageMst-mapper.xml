@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.LanguageMstMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.LanguageMstEntity">
+		select
+		LANG_ID as langId,
+		NAME_IN_ENGLISH as nameInEnglish,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MST
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.LanguageMstEntity"
+		resultType="com.kootour.mapper.entity.LanguageMstEntity">
+		select
+		LANG_ID as langId,
+		NAME_IN_ENGLISH as nameInEnglish,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MST
+		where
+		LANG_ID =#{langId}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.LanguageMstEntity"
+		resultType="com.kootour.mapper.entity.LanguageMstEntity">
+		select
+		LANG_ID as langId,
+		NAME_IN_ENGLISH as nameInEnglish,
+		NAME_IN_LOCAL as nameInLocal,
+		DEL_FLG as delFlg
+		from LANGUAGE_MST
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="nameInEnglish != null and nameInEnglish != '' ">
+			and NAME_IN_ENGLISH =#{nameInEnglish}
+		</if>
+		<if test="nameInLocal != null and nameInLocal != '' ">
+			and NAME_IN_LOCAL =#{nameInLocal}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.LanguageMstEntity">
+		update LANGUAGE_MST set
+		LANG_ID= #{langId},
+		NAME_IN_ENGLISH= #{nameInEnglish},
+		NAME_IN_LOCAL= #{nameInLocal},
+		DEL_FLG= #{delFlg}
+		where
+		LANG_ID =#{langId}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.LanguageMstEntity">
+		insert into LANGUAGE_MST(
+		LANG_ID,
+		NAME_IN_ENGLISH,
+		NAME_IN_LOCAL,
+		DEL_FLG
+		)values(
+		#{langId},
+		#{nameInEnglish},
+		#{nameInLocal},
+		#{delFlg}
+		)
+	</insert>
+</mapper>
+
+

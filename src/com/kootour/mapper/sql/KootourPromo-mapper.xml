@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kootour.mapper.KootourPromoMapper">
+	<select id="selectAll" resultType="com.kootour.mapper.entity.KootourPromoEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_PROMO_IDENTI_NO as kootourPromoIdentiNo,
+		KOOTOUR_PROMO_NAME as kootourPromoName,
+		KOOTOUR_PROMO_NO as kootourPromoNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		PROMO_TYPE as promoType,
+		PROMO_PERCENT as promoPercent,
+		PROMO_VALUE as promoValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_PROMO
+	</select>
+	<select id="selectByPK" parameterType="com.kootour.mapper.entity.KootourPromoEntity"
+		resultType="com.kootour.mapper.entity.KootourPromoEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_PROMO_IDENTI_NO as kootourPromoIdentiNo,
+		KOOTOUR_PROMO_NAME as kootourPromoName,
+		KOOTOUR_PROMO_NO as kootourPromoNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		PROMO_TYPE as promoType,
+		PROMO_PERCENT as promoPercent,
+		PROMO_VALUE as promoValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_PROMO
+		where
+		LANG_ID =#{langId}
+		and KOOTOUR_PROMO_IDENTI_NO =#{kootourPromoIdentiNo}
+	</select>
+	<select id="selectByCondition" parameterType="com.kootour.mapper.entity.KootourPromoEntity"
+		resultType="com.kootour.mapper.entity.KootourPromoEntity">
+		select
+		LANG_ID as langId,
+		KOOTOUR_PROMO_IDENTI_NO as kootourPromoIdentiNo,
+		KOOTOUR_PROMO_NAME as kootourPromoName,
+		KOOTOUR_PROMO_NO as kootourPromoNo,
+		BGN_DATE as bgnDate,
+		END_DATE as endDate,
+		PROMO_TYPE as promoType,
+		PROMO_PERCENT as promoPercent,
+		PROMO_VALUE as promoValue,
+		DEL_FLG as delFlg,
+		DATE_FORMAT(CREATE_TIME,'%Y%m%d%H%i%S') as createTime,
+		DATE_FORMAT(MODIFY_TIME,'%Y%m%d%H%i%S') as modifyTime
+		from KOOTOUR_PROMO
+		where
+		LANG_ID is not null
+		<if test="langId != null and langId != '' ">
+			and LANG_ID =#{langId}
+		</if>
+		<if test="kootourPromoIdentiNo != null and kootourPromoIdentiNo != '' ">
+			and KOOTOUR_PROMO_IDENTI_NO =#{kootourPromoIdentiNo}
+		</if>
+		<if test="kootourPromoName != null and kootourPromoName != '' ">
+			and KOOTOUR_PROMO_NAME =#{kootourPromoName}
+		</if>
+		<if test="kootourPromoNo != null and kootourPromoNo != '' ">
+			and KOOTOUR_PROMO_NO =#{kootourPromoNo}
+		</if>
+		<if test="bgnDate != null and bgnDate != '' ">
+			and BGN_DATE =#{bgnDate}
+		</if>
+		<if test="endDate != null and endDate != '' ">
+			and END_DATE =#{endDate}
+		</if>
+		<if test="delFlg != null and delFlg != '' ">
+			and DEL_FLG =#{delFlg}
+		</if>
+	</select>
+	<update id="updateByPK" parameterType="com.kootour.mapper.entity.KootourPromoEntity">
+		update KOOTOUR_PROMO set
+		LANG_ID= #{langId},
+		KOOTOUR_PROMO_IDENTI_NO= #{kootourPromoIdentiNo},
+		KOOTOUR_PROMO_NAME= #{kootourPromoName},
+		KOOTOUR_PROMO_NO= #{kootourPromoNo},
+		BGN_DATE= #{bgnDate},
+		END_DATE= #{endDate},
+		PROMO_TYPE= #{promoType},
+		PROMO_PERCENT= #{promoPercent},
+		PROMO_VALUE= #{promoValue},
+		DEL_FLG= #{delFlg},
+		CREATE_TIME= #{createTime},
+		MODIFY_TIME= now()
+		where
+		LANG_ID =#{langId}
+		and KOOTOUR_PROMO_IDENTI_NO =#{kootourPromoIdentiNo}
+	</update>
+	<insert id="insertOne" parameterType="com.kootour.mapper.entity.KootourPromoEntity">
+		insert into KOOTOUR_PROMO(
+		LANG_ID,
+		KOOTOUR_PROMO_IDENTI_NO,
+		KOOTOUR_PROMO_NAME,
+		KOOTOUR_PROMO_NO,
+		BGN_DATE,
+		END_DATE,
+		PROMO_TYPE,
+		PROMO_PERCENT,
+		PROMO_VALUE,
+		DEL_FLG,
+		CREATE_TIME,
+		MODIFY_TIME
+		)values(
+		#{langId},
+		#{kootourPromoIdentiNo},
+		#{kootourPromoName},
+		#{kootourPromoNo},
+		#{bgnDate},
+		#{endDate},
+		#{promoType},
+		#{promoPercent},
+		#{promoValue},
+		#{delFlg},
+		now() ,
+		now()
+		)
+	</insert>
+</mapper>
+
+

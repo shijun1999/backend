@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="default" extends="json-default">
+		<interceptors>
+			<interceptor name="kooIntercept"
+				class="com.kootour.interceptor.KooInterceptor" />
+			<interceptor-stack name="kooInterceptStack">
+				<interceptor-ref name="kooIntercept" />
+				<interceptor-ref name="i18n" />
+				<!--
+				<interceptor-ref name="token">
+					<param name="excludeMethods">
+						load,cityChange,addMyFavorite,detail,myFavorite,mailConfirm,courseFilter,cityCourseList,back,save,filterOk,order,comment,testUser_order,facebooklogin
+					</param>
+				</interceptor-ref> -->
+				<interceptor-ref name="basicStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="kooInterceptStack" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="invalid.token">/error.jsp</result>
+		</global-results>
+
+	</package>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.codebehind.pathPrefix" value="/jsp/" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.custom.i18n.resources" value="message_kootour"></constant>
+	<constant name="struts.convention.result.path" value="/WEB-INF/jsp/" />
+</struts>
