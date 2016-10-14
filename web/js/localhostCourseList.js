@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	$('#create_new').click(function () {
-		$(this).attr("disabled", true);
 		window.location.href="localhostCourse!load";
 	});
 });

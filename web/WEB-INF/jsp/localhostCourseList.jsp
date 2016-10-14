@@ -224,19 +224,19 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 
 
 		<!-- ace scripts -->
-		<script src="js/ace-elements.min.js"></script>
-		<script src="js/ace.min.js"></script>
+		<script src="/js/ace-elements.min.js"></script>
+		<script src="/js/ace.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="js/moment.min.js"></script>
-		<script src="js/bootstrap-dialog.min.js"></script>
-		<script src="js/HoldOn.min.js"></script>
-		<script src="js/localhostCourseList.js"></script>
-		<script src="js/localhostHeader.js" type="text/javascript"></script>
+		<script src="/js/moment.min.js"></script>
+		<script src="/js/bootstrap-dialog.min.js"></script>
+		<script src="/js/HoldOn.min.js"></script>
+		<script src="/js/localhostCourseList.js"></script>
+		<script src="/js/localhostHeader.js" type="text/javascript"></script>
 
 		<!-- inline scripts related to this page -->
 </body>
