@@ -6,8 +6,8 @@ import java.io.File;
 import java.util.List;
 
 public class UploadImageModel extends BaseModel {
-	private File file;
-	private String fileFileName;
+	private File file;//populated from input webpage,
+	private String fileFileName;//populated from input webpage,i.e. Capture.JPG
 	private List<String> uploadedFileName;
 	private String coursePictureIdentiNo;
 

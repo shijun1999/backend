@@ -715,7 +715,7 @@
                                                     <form id="uploadForm" action="" method="post" target="_self"
                                                           enctype="multipart/form-data">
                                                         <input id="input-dim-1" name="file" type="file" multiple
-                                                               class="file-loading" accept="image/*">
+                                                               class="file-loading" accept="image/*" data-overwrite-initial="false" >
                                                     </form>
                                                 </div>
 

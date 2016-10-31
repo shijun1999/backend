@@ -22,6 +22,8 @@ import com.kootour.model.UploadImageModel;
 import com.kootour.service.CourseService;
 import com.kootour.service.LocalhostAccountService;
 
+import static org.apache.struts2.ServletActionContext.getServletContext;
+
 @ParentPackage("json-default")
 @Results({
     @Result(name = "json", type="json", params={"root", "jsonStr"})

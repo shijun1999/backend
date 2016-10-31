@@ -150,7 +150,7 @@ $(document).ready(function() {
 							var prevHtml2= '';
 							
 							var uploadPath ="../upload/images/";
-							//var uploadPath ="./localImages/";
+							//var  Path ="./localImages/";
 							if (picturePathList != null && picturePathList.length > 0) {
 								// $("#prev-carousel-kootour").children().remove();
 								// $("#prev-carousel-inner").children().remove();

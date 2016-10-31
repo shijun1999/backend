@@ -9,11 +9,15 @@ import com.kootour.action.BaseAction;
 import com.kootour.mapper.entity.LocalhostEntity;
 import com.kootour.mapper.entity.LocationMstEntity;
 
+import static org.apache.struts2.ServletActionContext.getServletContext;
+
 public class BaseModel extends BaseAction {
 	private String langId;
 	private LocalhostEntity localhostEntity;
 	private String courseIdentiNo;
 	private List<LocationMstEntity> locationMstList = new ArrayList<LocationMstEntity>();
+
+	static public String projectRoot = getServletContext().getRealPath("/");
 
 	public String getLangId() {
 		return langId;

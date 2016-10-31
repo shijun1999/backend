@@ -46,13 +46,13 @@
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="js/ace-extra.min.js"></script>
+		<script src="/js/ace-extra.min.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="js/html5shiv.min.js"></script>
-		<script src="js/respond.min.js"></script>
+		<script src="/js/html5shiv.min.js"></script>
+		<script src="/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -632,7 +632,7 @@
                         <table class="tour-description">
                             <tr>
                                 <td>
-                                    <img class="icon" src="images/icons/icon_time_bgwhite_300X300.png" alt="time">
+                                    <img class="icon" src="/images/icons/icon_time_bgwhite_300X300.png" alt="time">
                                 </td>
 
                                 <td>
@@ -643,7 +643,7 @@
                         <table class="tour-description">
                             <tr>
                                 <td>
-                                    <img class="icon" src="images/icons/icon_luggage_bgwhite_300X300.png" alt="luggage">
+                                    <img class="icon" src="/images/icons/icon_luggage_bgwhite_300X300.png" alt="luggage">
                                 </td>
 
                                 <td>
@@ -654,7 +654,7 @@
                         <table class="tour-description">
                             <tr>
                                 <td>
-                                    <img class="icon" src="images/icons/icon_location_bgwhite_300X300.png" alt="location">
+                                    <img class="icon" src="/images/icons/icon_location_bgwhite_300X300.png" alt="location">
                                 </td>
 
                                 <td>
@@ -665,7 +665,7 @@
                         <table class="tour-description">
                             <tr>
                                 <td>
-                                    <img class="icon" src="images/icons/icon_language_bgwhite_300X300.png" alt="language">
+                                    <img class="icon" src="/images/icons/icon_language_bgwhite_300X300.png" alt="language">
                                 </td>
 
                                 <td>
@@ -827,12 +827,12 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="js/jquery-2.2.0.min.js"></script>
+		<script src="/js/jquery-2.2.0.min.js"></script>
 
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-		<script src="js/jquery.1.11.1.min.js"></script>
+		<script src="/js/jquery.1.11.1.min.js"></script>
 		<![endif]-->
 
 		<!--[if !IE]> -->
@@ -850,28 +850,28 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 
 		<!-- ace scripts -->
-		<script src="js/ace-elements.min.js"></script>
-		<script src="js/ace.min.js"></script>
+		<script src="/js/ace-elements.min.js"></script>
+		<script src="/js/ace.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="js/chosen.jquery.min.js" type="text/javascript"></script>
-		<script src="summernote/summernote.min.js"></script>
-		<script src="js/moment.min.js"></script>
-		<script src="js/daterangepicker.js"></script>
-		<script src="js/bootbox.min.js"></script>
-		<script src="js/fileinput.js"></script>
-		<script src="js/fuelux.wizard.min.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/jquery.timepicker.min.js"></script>
-		<script src="js/jquery.datepair.min.js"></script>
-		<script src="js/jquery.nestable.min.js"></script>
-		<script src="js/HoldOn.min.js"></script>
-		<script src="js/bootstrap-dialog.min.js"></script>
-		<script src="js/localhostCourseClone.js" type="text/javascript"></script>
-		<script src="js/localhostHeader.js" type="text/javascript"></script>
+		<script src="/js/chosen.jquery.min.js" type="text/javascript"></script>
+		<script src="/summernote/summernote.min.js"></script>
+		<script src="/js/moment.min.js"></script>
+		<script src="/js/daterangepicker.js"></script>
+		<script src="/js/bootbox.min.js"></script>
+		<script src="/js/fileinput.js"></script>
+		<script src="/js/fuelux.wizard.min.js"></script>
+		<script src="/js/jquery.validate.min.js"></script>
+		<script src="/js/jquery.timepicker.min.js"></script>
+		<script src="/js/jquery.datepair.min.js"></script>
+		<script src="/js/jquery.nestable.min.js"></script>
+		<script src="/js/HoldOn.min.js"></script>
+		<script src="/js/bootstrap-dialog.min.js"></script>
+		<script src="/js/localhostCourseClone.js" type="text/javascript"></script>
+		<script src="/js/localhostHeader.js" type="text/javascript"></script>
 
 		<!-- inline scripts related to this page -->
 </body>

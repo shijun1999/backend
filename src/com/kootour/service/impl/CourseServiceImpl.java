@@ -15,6 +15,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
@@ -588,11 +589,16 @@ public class CourseServiceImpl implements CourseService {
 			String srcFileName = inModelLocalhostCourseEntity.getFileFileName();
 	        String suffix = srcFileName.substring(srcFileName.lastIndexOf("."));
 	        String newName = Calendar.getInstance().getTimeInMillis() + suffix;
-	        String newPath = "/home/kootour_dev/webapps/upload/images/" + newName;
-//	        String newPath = "C:/upload/" + newName;
-	        File destFile = new File(newPath);
 
-	        doCopy(srcFile, destFile);
+//	        File destDir = new File(inModelLocalhostCourseEntity.projectRoot + "upload\\images\\");
+//
+//			if (!destDir.exists()) {
+//				destDir.mkdir();
+//			}
+
+			File destFile = new File(inModelLocalhostCourseEntity.projectRoot + "upload\\images\\" + newName);
+
+			FileUtils.copyFile(srcFile,destFile,true);
 
 	        retMsg.setHasError(false);
 	        retMsg.setMessage("Upload success.");
@@ -603,18 +609,6 @@ public class CourseServiceImpl implements CourseService {
 			retMsg.setMessage(this.getClass().getName() + ":<br>" + e.getMessage());
 			return retMsg;
 		}
-	}
-
-	private void doCopy(File src, File dest) throws Exception {
-        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(src));
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(dest));
-        byte [] buf = new byte [2048];
-        int len = -1;
-        while((len = bis.read(buf)) != -1) {
-            bos.write(buf);
-        }
-        bis.close();
-        bos.close();
 	}
 
 	private List<String> getDatesBetweenTwoDate(String bgnDateStr, String endDateStr) throws ParseException {
